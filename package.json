@@ -1,13 +1,16 @@
 {
-  "name": "wishtack-angular-interchangeable-components-demo",
+  "name": "conference-finder",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "yarn build --prod",
+    "deploy": "run-s build:prod _firebase:deploy",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "_firebase:deploy": "firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +29,7 @@
     "@wishtack/rx-scavenger": "^1.0.2",
     "core-js": "^2.5.4",
     "firebase": "^5.5.1",
+    "npm-run-all": "^4.1.3",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
@@ -49,5 +53,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
-  }
+  },
+  "workspaces": [
+    ".",
+    "functions"
+  ]
 }
