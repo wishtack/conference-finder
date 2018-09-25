@@ -16,6 +16,7 @@
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
+    "@angular/fire": "^5.0.2",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/material": "^6.4.7",
@@ -24,6 +25,7 @@
     "@angular/router": "^6.1.0",
     "@wishtack/rx-scavenger": "^1.0.2",
     "core-js": "^2.5.4",
+    "firebase": "^5.5.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
