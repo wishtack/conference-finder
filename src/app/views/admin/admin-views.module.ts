@@ -13,12 +13,12 @@ import { ConfigurationViewComponent } from './configuration-view/configuration-v
 
 export const adminRoutes: Route[] = [
     {
-        path: 'config',
+        path: 'configuration',
         component: ConfigurationViewComponent
     },
     {
         path: '**',
-        redirectTo: 'config'
+        redirectTo: 'configuration'
     }
 ];
 
