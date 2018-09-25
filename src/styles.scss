@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$dark-primary: mat-palette($mat-indigo);
+$dark-accent: mat-palette($mat-pink, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@include angular-material-theme($dark-theme);
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #36474f;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    text-align: center;
+}
