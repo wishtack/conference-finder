@@ -7,6 +7,10 @@ const routes: Routes = [
     {
         path: '',
         component: ConferenceListContainerComponent
+    },
+    {
+        path: 'admin',
+        loadChildren: './views/admin/admin-views.module#AdminViewsModule'
     }
 ];
 
