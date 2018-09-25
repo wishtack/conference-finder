@@ -7,6 +7,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { DynamicComponentLoaderModule } from '../../lib/dynamic-component-loader.module';
 import { ConferenceListContainerComponent } from './conference-list-container/conference-list-container.component';
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         ConferenceListContainerComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        DynamicComponentLoaderModule.declareModule('../conference-list-grid/conference-list-grid.module#ConferenceListGridModule'),
+        DynamicComponentLoaderModule.declareModule('../conference-list-table/conference-list-table.module#ConferenceListTableModule')
     ]
 })
 export class ConferenceModule {
