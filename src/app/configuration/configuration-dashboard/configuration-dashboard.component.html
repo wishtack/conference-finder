@@ -1,0 +1,42 @@
+<div class="grid-container">
+
+    <h1 class="mat-h1">Configuration Dashboard</h1>
+
+    <mat-grid-list cols="1">
+
+        <mat-grid-tile
+            *ngFor="let configuration of configurationList">
+
+            <mat-card class="dashboard-card">
+
+                <mat-card-header>
+
+                    <mat-card-title>
+
+                        <button [matMenuTriggerFor]="menu" aria-label="Toggle menu" class="more-button" mat-icon-button>
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Remove</button>
+                        </mat-menu>
+
+                    </mat-card-title>
+
+                </mat-card-header>
+
+                <mat-card-content class="dashboard-card-content">
+
+                    <wt-configuration-form
+                        (configurationChange)="onConfigurationChange(configuration.id, $event)"
+                        [configuration]="configuration"></wt-configuration-form>
+
+                </mat-card-content>
+
+            </mat-card>
+
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+</div>

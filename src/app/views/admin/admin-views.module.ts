@@ -8,6 +8,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { ConfigurationModule } from '../../configuration/configuration.module';
 import { ConfigurationViewComponent } from './configuration-view/configuration-view.component';
 
 export const adminRoutes: Route[] = [
@@ -27,6 +28,7 @@ export const adminRoutes: Route[] = [
     ],
     imports: [
         CommonModule,
+        ConfigurationModule,
         RouterModule.forChild(adminRoutes)
     ]
 })

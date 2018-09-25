@@ -1,0 +1,14 @@
+<form [formGroup]="configurationForm">
+
+    <div>
+        <label>Conference list display mode:</label>
+        <mat-radio-group
+            formControlName="conferenceListDisplayMode"
+            fxLayout="row"
+            fxLayoutAlign="space-around">
+            <mat-radio-button value="grid">Grid</mat-radio-button>
+            <mat-radio-button value="list">List</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+</form>
