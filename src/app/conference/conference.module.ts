@@ -19,8 +19,14 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
     ],
     imports: [
         CommonModule,
-        DynamicComponentLoaderModule.declareModule('../conference-list-grid/conference-list-grid.module#ConferenceListGridModule'),
-        DynamicComponentLoaderModule.declareModule('../conference-list-table/conference-list-table.module#ConferenceListTableModule')
+        DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-list-grid',
+            modulePath: '../conference-list-grid/conference-list-grid.module#ConferenceListGridModule'
+        }),
+        DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-list-table',
+            modulePath: '../conference-list-table/conference-list-table.module#ConferenceListTableModule'
+        })
     ]
 })
 export class ConferenceModule {

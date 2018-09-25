@@ -6,6 +6,9 @@ import { ConferenceListTableComponent } from './conference-list-table/conference
     declarations: [
         ConferenceListTableComponent
     ],
+    entryComponents: [
+        ConferenceListTableComponent
+    ],
     exports: [
         ConferenceListTableComponent
     ],

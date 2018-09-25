@@ -6,6 +6,9 @@ import { ConferenceListGridComponent } from './conference-list-grid/conference-l
     declarations: [
         ConferenceListGridComponent
     ],
+    entryComponents: [
+        ConferenceListGridComponent
+    ],
     exports: [
         ConferenceListGridComponent
     ],
