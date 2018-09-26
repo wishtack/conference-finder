@@ -4872,6 +4872,10 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
+ng-dynamic-component@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ng-dynamic-component/-/ng-dynamic-component-3.0.0.tgz#a0bdff227deff8c405b80d7447a273516140f186"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

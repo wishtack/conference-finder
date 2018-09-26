@@ -1,16 +1,26 @@
 <!-- Condition type selector. -->
-<mat-form-field>
-    <mat-select
-        [formControl]="conditionTypeControl"
-        placeholder="Condition type">
+<div>
+    <mat-form-field>
+        <mat-select
+            [formControl]="conditionTypeControl"
+            placeholder="Condition type">
 
-        <mat-option [value]="null">None</mat-option>
+            <mat-option [value]="null">None</mat-option>
 
-        <mat-option
-            *ngFor="let conditionTypeInfo of conditionTypeInfoList"
-            [value]="conditionTypeInfo.type">
-            {{ conditionTypeInfo.label }}
-        </mat-option>
+            <mat-option
+                *ngFor="let conditionTypeInfo of conditionTypeInfoList"
+                [value]="conditionTypeInfo.type">
+                {{ conditionTypeInfo.label }}
+            </mat-option>
 
-    </mat-select>
-</mat-form-field>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div>
+    <ng-container
+        *ngIf="conditionFormComponentClass"
+        [ngComponentOutlet]="conditionFormComponentClass"
+        [ndcDynamicInputs]="inputs"
+        [ndcDynamicOutputs]="outputs"></ng-container>
+</div>

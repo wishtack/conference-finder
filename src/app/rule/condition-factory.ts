@@ -29,12 +29,7 @@ export class ConditionFactory {
             return null;
         }
 
-        const {conditionClass} = this._conditionTypeInfoList
-            .find(conditionTypeInfo => conditionTypeInfo.type === conditionData.type);
-
-        if (conditionClass == null) {
-            throw unknownConditionType(conditionData.type);
-        }
+        const conditionClass = this._getConditionTypeInfo(conditionData.type).conditionClass;
 
         return new conditionClass(conditionData);
 
@@ -42,6 +37,29 @@ export class ConditionFactory {
 
     getConditionTypeInfoList(): ConditionTypeInfo[] {
         return this._conditionTypeInfoList;
+    }
+
+    getConditionFormComponentClass(conditionType: string) {
+
+        if (conditionType == null) {
+            return null;
+        }
+
+        return this._getConditionTypeInfo(conditionType).conditionFormComponentClass;
+
+    }
+
+    private _getConditionTypeInfo(conditionType: string) {
+
+        const conditionTypeInfo = this._conditionTypeInfoList
+            .find(_conditionTypeInfo => _conditionTypeInfo.type === conditionType);
+
+        if (conditionTypeInfo == null) {
+            throw unknownConditionType(conditionType);
+        }
+
+        return conditionTypeInfo;
+
     }
 
 }
