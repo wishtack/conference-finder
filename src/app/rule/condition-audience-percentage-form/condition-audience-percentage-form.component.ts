@@ -1,15 +1,43 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 import { AbstractConditionFormComponent } from '../abstract-condition-form-component';
-import { Condition } from '../condition';
+import { ConditionAudiencePercentage } from './condition-audience-percentage';
 
 @Component({
     selector: 'wt-condition-audience-percentage-form',
     templateUrl: './condition-audience-percentage-form.component.html',
     styleUrls: ['./condition-audience-percentage-form.component.scss']
 })
-export class ConditionAudiencePercentageFormComponent implements AbstractConditionFormComponent {
+export class ConditionAudiencePercentageFormComponent implements AbstractConditionFormComponent, OnChanges {
 
-    @Input() condition: Condition;
-    @Output() conditionChange = new EventEmitter<Condition>();
+    @Input() condition: ConditionAudiencePercentage;
+    @Output() conditionChange: Observable<ConditionAudiencePercentage>;
+
+    audiencePercentageControl = new FormControl();
+
+    constructor() {
+        this.conditionChange = this.audiencePercentageControl.valueChanges
+            .pipe(
+                debounceTime(100),
+                map(audiencePercentage => {
+                    return new ConditionAudiencePercentage({
+                        ...this.condition,
+                        audiencePercentage
+                    });
+                })
+            );
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.condition != null) {
+            this.audiencePercentageControl.setValue(this.condition.audiencePercentage, {
+                emitEvent: false
+            });
+        }
+
+    }
 
 }

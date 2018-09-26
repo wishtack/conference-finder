@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { Condition } from './condition';
-import { conditionAudiencePercentageTypeInfo } from './condition-audience-percentage-form/condition-audience-percentage';
+import { conditionAudiencePercentageTypeInfo } from './condition-audience-percentage-form/condition-audience-percentage-type-info';
 import { ConditionTypeInfo } from './condition-type-info';
 
 export function unknownConditionType(conditionType: string) {
