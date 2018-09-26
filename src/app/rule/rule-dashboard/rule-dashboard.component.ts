@@ -6,7 +6,7 @@ import { RuleRepository } from '../rule-repository';
 @Component({
     selector: 'wt-rule-dashboard',
     templateUrl: './rule-dashboard.component.html',
-    styleUrls: ['./rule-dashboard.component.css']
+    styleUrls: ['./rule-dashboard.component.scss']
 })
 export class RuleDashboardComponent implements OnDestroy, OnInit {
 
