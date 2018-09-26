@@ -8,6 +8,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { ConditionFactory } from './condition-factory';
 import { Rule } from './rule';
 
 @Injectable({
@@ -17,17 +18,27 @@ export class RuleRepository {
 
     private _collection: AngularFirestoreCollection<Rule>;
 
-    constructor(private _angularFirestore: AngularFirestore) {
+    constructor(
+        private _angularFirestore: AngularFirestore,
+        private _conditionFactory: ConditionFactory
+    ) {
         this._collection = this._angularFirestore.collection<Rule>('rules');
     }
 
     watchRuleList() {
         return this._collection
             .snapshotChanges()
-            .pipe(map(actionList => actionList.map(action => new Rule({
-                id: action.payload.doc.id,
-                ...action.payload.doc.data()
-            }))));
+            .pipe(map(actionList => actionList.map(action => {
+
+                const ruleData = action.payload.doc.data();
+
+                return new Rule({
+                    id: action.payload.doc.id,
+                    ...ruleData,
+                    condition: this._conditionFactory.createCondition(ruleData.condition)
+                });
+
+            })));
     }
 
     async createRule(rule: Rule) {

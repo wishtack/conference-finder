@@ -1,3 +1,16 @@
-<p>
-    condition-form works!
-</p>
+<!-- Condition type selector. -->
+<mat-form-field>
+    <mat-select
+        [formControl]="conditionTypeControl"
+        placeholder="Condition type">
+
+        <mat-option [value]="null">None</mat-option>
+
+        <mat-option
+            *ngFor="let conditionTypeInfo of conditionTypeInfoList"
+            [value]="conditionTypeInfo.type">
+            {{ conditionTypeInfo.label }}
+        </mat-option>
+
+    </mat-select>
+</mat-form-field>

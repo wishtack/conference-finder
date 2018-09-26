@@ -6,7 +6,6 @@
  */
 import { Configuration } from '../configuration/configuration';
 import { Condition } from './condition';
-import { ConditionFactory } from './condition-factory';
 
 export class Rule {
 
@@ -14,11 +13,9 @@ export class Rule {
     condition: Condition;
     configuration: Configuration;
 
-    private _conditionFactory = new ConditionFactory();
-
     constructor(args: Partial<Rule> = {}) {
         this.id = args.id;
-        this.condition = args.condition != null ? this._conditionFactory.createCondition(args.condition) : null;
+        this.condition = args.condition;
         this.configuration = args.configuration != null ? new Configuration(args.configuration) : null;
     }
 

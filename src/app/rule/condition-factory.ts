@@ -5,7 +5,7 @@
  * $Id: $
  */
 
-import { Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Condition } from './condition';
 import { ConditionAudiencePercentage } from './condition-audience-percentage-form/condition-audience-percentage';
 
@@ -18,30 +18,41 @@ export interface ConditionTypeInfo {
     type: string;
 }
 
+export interface ConditionClass extends ConditionTypeInfo, Function {
+    new(...args: any[]): Condition;
+}
+
+@Injectable({
+    providedIn: 'root'
+})
 export class ConditionFactory {
 
-    private _conditionTypeMap = new Map<string, Type<Condition> & ConditionTypeInfo>(Object.entries({
+    private _conditionTypeMap = new Map<string, ConditionClass>(Object.entries({
         [ConditionAudiencePercentage.type]: ConditionAudiencePercentage
     }));
 
     createCondition(conditionData: Partial<Condition>): Condition {
 
-        const conditionType = this._conditionTypeMap[conditionData.type];
-
-        if (conditionType == null) {
-            throw unknownConditionType(conditionType);
+        if (conditionData == null || conditionData.type == null) {
+            return null;
         }
 
-        return new conditionType(conditionData);
+        const conditionClass = this._conditionTypeMap.get(conditionData.type);
+
+        if (conditionClass == null) {
+            throw unknownConditionType(conditionData.type);
+        }
+
+        return new conditionClass(conditionData);
 
     }
 
-    getConditionTypeInfoList() {
+    getConditionTypeInfoList(): ConditionTypeInfo[] {
         return Array.from(this._conditionTypeMap.values())
-            .map(conditionType => {
+            .map(conditionClass => {
                 return {
-                    label: conditionType.label,
-                    type: conditionType.type,
+                    label: conditionClass.label,
+                    type: conditionClass.type,
                 };
             });
     }

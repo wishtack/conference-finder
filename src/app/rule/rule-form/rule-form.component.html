@@ -1,3 +1,9 @@
+<wt-condition-form
+    (conditionChange)="onConditionChange($event)"
+    [condition]="rule.condition"></wt-condition-form>
+
+<hr>
+
 <wt-configuration-form
-    (configurationChange)="onConfigurationChange($event)"
-    [configuration]="rule.configuration"></wt-configuration-form>
+    [configuration]="rule.configuration"
+    (configurationChange)="onConfigurationChange($event)"></wt-configuration-form>

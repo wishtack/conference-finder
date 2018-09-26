@@ -2,7 +2,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatIconModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule } from '@angular/material';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { SharedModule } from '../shared/shared.module';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
@@ -25,11 +25,13 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
     imports: [
         CommonModule,
         ConfigurationModule,
+        LayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatFormFieldModule,
         MatIconModule,
         MatMenuModule,
-        LayoutModule,
+        MatSelectModule,
         ReactiveFormsModule,
         SharedModule
     ]

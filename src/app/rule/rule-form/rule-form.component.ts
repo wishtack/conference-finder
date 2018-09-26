@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Configuration } from '../../configuration/configuration';
+import { Condition } from '../condition';
 import { Rule } from '../rule';
 
 @Component({
@@ -11,6 +12,13 @@ export class RuleFormComponent {
 
     @Input() rule: Rule;
     @Output() ruleChange = new EventEmitter<Rule>();
+
+    onConditionChange(condition: Condition) {
+        this.ruleChange.emit(new Rule({
+            ...this.rule,
+            condition
+        }));
+    }
 
     onConfigurationChange(configuration: Configuration) {
         this.ruleChange.emit(new Rule({
