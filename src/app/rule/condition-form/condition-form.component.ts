@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Condition } from '../condition';
-import { ConditionFactory, ConditionTypeInfo } from '../condition-factory';
+import { ConditionFactory } from '../condition-factory';
+import { ConditionTypeInfo } from '../condition-type-info';
 
 @Component({
     selector: 'wt-condition-form',

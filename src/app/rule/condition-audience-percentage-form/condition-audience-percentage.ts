@@ -5,13 +5,15 @@
  * $Id: $
  */
 import { Condition } from '../condition';
+import { ConditionTypeInfo } from '../condition-type-info';
+import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form.component';
+
 
 export class ConditionAudiencePercentage implements Condition {
 
-    static label = 'Audience Percentage';
     static type = 'audience-percentage';
 
-    type = ConditionAudiencePercentage.type;
+    type = conditionAudiencePercentageTypeInfo.type;
 
     audiencePercentage: number;
 
@@ -20,3 +22,10 @@ export class ConditionAudiencePercentage implements Condition {
     }
 
 }
+
+export const conditionAudiencePercentageTypeInfo: ConditionTypeInfo = {
+    conditionClass: ConditionAudiencePercentage,
+    conditionFormComponentClass: ConditionAudiencePercentageFormComponent,
+    label: 'Audience Percentage',
+    type: ConditionAudiencePercentage.type
+};

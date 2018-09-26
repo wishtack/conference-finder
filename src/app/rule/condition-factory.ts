@@ -7,19 +7,11 @@
 
 import { Injectable } from '@angular/core';
 import { Condition } from './condition';
-import { ConditionAudiencePercentage } from './condition-audience-percentage-form/condition-audience-percentage';
+import { conditionAudiencePercentageTypeInfo } from './condition-audience-percentage-form/condition-audience-percentage';
+import { ConditionTypeInfo } from './condition-type-info';
 
 export function unknownConditionType(conditionType: string) {
     return new Error(`Unknown condition type '${conditionType}'.`);
-}
-
-export interface ConditionTypeInfo {
-    label: string;
-    type: string;
-}
-
-export interface ConditionClass extends ConditionTypeInfo, Function {
-    new(...args: any[]): Condition;
 }
 
 @Injectable({
@@ -27,9 +19,9 @@ export interface ConditionClass extends ConditionTypeInfo, Function {
 })
 export class ConditionFactory {
 
-    private _conditionTypeMap = new Map<string, ConditionClass>(Object.entries({
-        [ConditionAudiencePercentage.type]: ConditionAudiencePercentage
-    }));
+    private _conditionTypeInfoList = [
+        conditionAudiencePercentageTypeInfo
+    ];
 
     createCondition(conditionData: Partial<Condition>): Condition {
 
@@ -37,7 +29,8 @@ export class ConditionFactory {
             return null;
         }
 
-        const conditionClass = this._conditionTypeMap.get(conditionData.type);
+        const {conditionClass} = this._conditionTypeInfoList
+            .find(conditionTypeInfo => conditionTypeInfo.type === conditionData.type);
 
         if (conditionClass == null) {
             throw unknownConditionType(conditionData.type);
@@ -48,13 +41,7 @@ export class ConditionFactory {
     }
 
     getConditionTypeInfoList(): ConditionTypeInfo[] {
-        return Array.from(this._conditionTypeMap.values())
-            .map(conditionClass => {
-                return {
-                    label: conditionClass.label,
-                    type: conditionClass.type,
-                };
-            });
+        return this._conditionTypeInfoList;
     }
 
 }
