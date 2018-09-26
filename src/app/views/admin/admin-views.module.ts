@@ -8,27 +8,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { ConfigurationModule } from '../../configuration/configuration.module';
-import { ConfigurationViewComponent } from './configuration-view/configuration-view.component';
+import { RuleDashboardComponent } from '../../rule/rule-dashboard/rule-dashboard.component';
+import { RuleModule } from '../../rule/rule.module';
 
 export const adminRoutes: Route[] = [
     {
-        path: 'configuration',
-        component: ConfigurationViewComponent
+        path: 'rules',
+        component: RuleDashboardComponent
     },
     {
         path: '**',
-        redirectTo: 'configuration'
+        redirectTo: 'rules'
     }
 ];
 
 @NgModule({
-    declarations: [
-        ConfigurationViewComponent
-    ],
     imports: [
         CommonModule,
-        ConfigurationModule,
+        RuleModule,
         RouterModule.forChild(adminRoutes)
     ]
 })

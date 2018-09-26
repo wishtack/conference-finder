@@ -8,35 +8,36 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { Configuration } from './configuration';
+import { Rule } from './rule';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ConfigurationRepository {
+export class RuleRepository {
 
-    private _collection: AngularFirestoreCollection<Configuration>;
+    private _collection: AngularFirestoreCollection<Rule>;
 
     constructor(private _angularFirestore: AngularFirestore) {
-        this._collection = this._angularFirestore.collection<Configuration>('rules');
+        this._collection = this._angularFirestore.collection<Rule>('rules');
     }
 
     watchConfigurationList() {
         return this._collection
             .stateChanges()
-            .pipe(map(actionList => actionList.map(action => new Configuration({
+            .pipe(map(actionList => actionList.map(action => new Rule({
                 id: action.payload.doc.id,
                 ...action.payload.doc.data()
             }))));
     }
 
-    updateConfiguration(configurationId: string, configuration: Configuration) {
+    updateRule(ruleId: string, rule: Rule) {
 
-        const data = {...configuration};
+        /* @HACK: Hacky way to avoid custom type errors with firebase. */
+        const data = JSON.parse(JSON.stringify(rule));
 
         delete data['id'];
 
-        return this._collection.doc<Configuration>(configurationId).update(data);
+        return this._collection.doc<Rule>(ruleId).update(data);
 
     }
 

@@ -1,6 +1,6 @@
 <h1 class="mat-h1">Configuration Dashboard</h1>
 
-<mat-card *ngFor="let configuration of configurationList">
+<mat-card *ngFor="let rule of ruleList">
 
     <mat-card-header>
 
@@ -20,9 +20,9 @@
 
     <mat-card-content class="dashboard-card-content">
 
-        <wt-configuration-form
-            (configurationChange)="onConfigurationChange(configuration.id, $event)"
-            [configuration]="configuration"></wt-configuration-form>
+        <wt-rule-form
+            [rule]="rule"
+            (ruleChange)="onRuleChange(rule.id, $event)"></wt-rule-form>
 
     </mat-card-content>
 
