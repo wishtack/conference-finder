@@ -2,7 +2,8 @@
 
 <button
     color="primary"
-    mat-raised-button>ADD RULE
+    mat-raised-button
+    (click)="createRule()">ADD RULE
 </button>
 
 <div
@@ -10,7 +11,7 @@
     fxLayoutAlign="start center">
 
     <mat-card
-        *ngFor="let rule of ruleList"
+        *ngFor="let rule of ruleList; trackBy:ruleIdTracker"
         class="wt-rule-card">
 
         <mat-card-header>
@@ -22,7 +23,10 @@
                 </button>
 
                 <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item>Remove</button>
+                    <button
+                        mat-menu-item
+                        (click)=removeRule(rule.id)>Remove
+                    </button>
                 </mat-menu>
 
             </mat-card-title>

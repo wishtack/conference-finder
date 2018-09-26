@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
+import { Configuration } from '../../configuration/configuration';
 import { Rule } from '../rule';
 import { RuleRepository } from '../rule-repository';
 
@@ -23,11 +24,25 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
             .subscribe(ruleList => this.ruleList = ruleList);
     }
 
+    ngOnDestroy() {
+    }
+
     onRuleChange(ruleId: string, rule: Rule) {
         this._ruleRepository.updateRule(ruleId, rule);
     }
 
-    ngOnDestroy() {
+    createRule() {
+        this._ruleRepository.createRule(new Rule({
+            configuration: new Configuration()
+        }));
+    }
+
+    removeRule(ruleId: any) {
+        this._ruleRepository.removeRule(ruleId);
+    }
+
+    ruleIdTracker(index: number, rule: Rule) {
+        return rule.id;
     }
 
 }

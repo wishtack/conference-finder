@@ -23,17 +23,27 @@ export class RuleRepository {
 
     watchConfigurationList() {
         return this._collection
-            .stateChanges()
+            .snapshotChanges()
             .pipe(map(actionList => actionList.map(action => new Rule({
                 id: action.payload.doc.id,
                 ...action.payload.doc.data()
             }))));
     }
 
-    updateRule(ruleId: string, rule: Rule) {
+    async createRule(rule: Rule) {
 
-        /* @HACK: Hacky way to avoid custom type errors with firebase. */
-        const data = JSON.parse(JSON.stringify(rule));
+        const data = await this._collection.add(this._ruleToData(rule));
+
+        return new Rule({
+            ...rule,
+            id: data.id
+        });
+
+    }
+
+    async updateRule(ruleId: string, rule: Rule) {
+
+        const data = this._ruleToData(rule);
 
         delete data['id'];
 
@@ -41,4 +51,16 @@ export class RuleRepository {
 
     }
 
+    async removeRule(ruleId: any) {
+
+        return this._collection.doc<Rule>(ruleId).delete();
+
+    }
+
+    private _ruleToData(rule: Rule) {
+
+        /* @HACK: Hacky way to avoid custom type errors with firebase. */
+        return JSON.parse(JSON.stringify(rule));
+
+    }
 }
