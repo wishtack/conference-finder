@@ -21,7 +21,7 @@ export class RuleRepository {
         this._collection = this._angularFirestore.collection<Rule>('rules');
     }
 
-    watchConfigurationList() {
+    watchRuleList() {
         return this._collection
             .snapshotChanges()
             .pipe(map(actionList => actionList.map(action => new Rule({

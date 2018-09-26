@@ -19,7 +19,7 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit() {
-        this._ruleRepository.watchConfigurationList()
+        this._ruleRepository.watchRuleList()
             .pipe(this._scavenger.collect())
             .subscribe(ruleList => this.ruleList = ruleList);
     }
