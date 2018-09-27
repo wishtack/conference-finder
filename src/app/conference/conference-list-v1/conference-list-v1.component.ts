@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Conference } from '../../conference';
-import { ConferenceListComponent } from '../../conference-list-component';
+import { Conference } from '../conference';
+import { ConferenceListComponent } from '../conference-list-component';
 
 @Component({
     selector: 'wt-conference-list-v1',
