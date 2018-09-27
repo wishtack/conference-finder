@@ -19,6 +19,11 @@ import { defer, Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './_internals';
 
+export interface ComponentLocation {
+    moduleId: string;
+    selector: string;
+}
+
 export interface ComponentRecipe<T> {
     componentType: Type<T>;
     ngModuleFactory: NgModuleFactory<any>;
@@ -45,7 +50,7 @@ export class DynamicComponentLoader {
     ) {
     }
 
-    getComponentRecipe<T = any>({moduleId, selector}: { moduleId: string, selector: string }): Observable<ComponentRecipe<T>> {
+    getComponentRecipe<T = any>({moduleId, selector}: ComponentLocation): Observable<ComponentRecipe<T>> {
 
         return defer(() => {
 

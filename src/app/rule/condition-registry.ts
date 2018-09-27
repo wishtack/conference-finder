@@ -8,6 +8,7 @@
 import { Injectable } from '@angular/core';
 import { ConditionAudiencePercentage } from './condition-audience-percentage-form/condition-audience-percentage';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
+import { ConditionAudiencePercentageVerifier } from './condition-audience-percentage-form/condition-audience-percentage-verifier';
 import { ConditionTypeInfo } from './condition-type-info';
 
 export function unknownConditionType(conditionType: string) {
@@ -23,10 +24,16 @@ export class ConditionRegistry {
         {
             conditionClass: ConditionAudiencePercentage,
             conditionFormComponentClass: ConditionAudiencePercentageFormComponent,
+            conditionVerifier: this._conditionAudiencePercentageVerifier,
             label: 'Audience Percentage',
             type: ConditionAudiencePercentage.type
         }
     ];
+
+    constructor(
+        private _conditionAudiencePercentageVerifier: ConditionAudiencePercentageVerifier
+    ) {
+    }
 
     getConditionClass(conditionType: string) {
         return this._getConditionTypeInfo(conditionType).conditionClass;
@@ -44,6 +51,10 @@ export class ConditionRegistry {
 
         return this._getConditionTypeInfo(conditionType).conditionFormComponentClass;
 
+    }
+
+    getConditionVerifier(conditionType: string) {
+        return this._getConditionTypeInfo(conditionType).conditionVerifier;
     }
 
     private _getConditionTypeInfo(conditionType: string) {
