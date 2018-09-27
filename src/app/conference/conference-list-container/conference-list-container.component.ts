@@ -26,9 +26,13 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
             moduleId: 'conference-list-grid',
             selector: 'wt-conference-list-grid'
         },
-        table: {
+        v1: {
             moduleId: 'conference-list-v1',
             selector: 'wt-conference-list-v1'
+        },
+        v2: {
+            moduleId: 'conference-list-v2',
+            selector: 'wt-conference-list-v2'
         }
     };
 
@@ -45,7 +49,7 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
                 map(conferenceListDisplayMode => {
 
                     return this._conferenceListComponentLocationDict[conferenceListDisplayMode]
-                        || this._conferenceListComponentLocationDict.table;
+                        || this._conferenceListComponentLocationDict.v1;
 
                 })
             );

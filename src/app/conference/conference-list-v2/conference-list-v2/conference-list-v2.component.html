@@ -1,0 +1,16 @@
+<mat-list>
+
+    <mat-list-item *ngFor="let conference of conferenceList">
+        <mat-icon matListIcon>event</mat-icon>
+        <h4 mat-line>
+            <a
+                [href]="conference.url"
+                class="wt-conference__link">
+                {{ conference.name }}
+            </a>
+        </h4>
+        <p mat-line>{{ conference.startDate | date }} / {{ conference.endDate | date }}</p>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+
+</mat-list>
