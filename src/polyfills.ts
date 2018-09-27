@@ -80,3 +80,6 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 mobileDragDrop.polyfill({
     dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
 });
+/* Fix drag and drop issue on ios that triggers scroll.*/
+window.addEventListener('touchmove', () => {
+}, {passive: false});
