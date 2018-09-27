@@ -22,7 +22,7 @@ export class RuleRepository {
         private _angularFirestore: AngularFirestore,
         private _conditionFactory: ConditionFactory
     ) {
-        this._collection = this._angularFirestore.collection<Rule>('rules');
+        this._collection = this._angularFirestore.collection<Rule>('rules', ref => ref.orderBy('position'));
     }
 
     watchRuleList() {

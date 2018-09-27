@@ -48,7 +48,8 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
 
     createRule() {
         this._ruleRepository.createRule(new Rule({
-            configuration: new Configuration()
+            configuration: new Configuration(),
+            position: this.ruleList.length
         }));
     }
 
@@ -60,9 +61,8 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
         return rule.id;
     }
 
-    onRuleDragStart(rule: Rule, dragStartEvent: DragEvent) {
+    onRuleDragStart(rule: Rule) {
         this.draggedRule = rule;
-        dragStartEvent.dataTransfer.setData('ruleId', rule.id);
     }
 
     onRuleDragEnter(rule: Rule) {
@@ -79,6 +79,11 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
 
         this.draggedOverRule = null;
 
+    }
+
+    onRuleDrop(rule: Rule) {
+        console.log(this.draggedRule);
+        console.log(rule);
     }
 
     onRuleDragEnd() {

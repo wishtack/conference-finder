@@ -3,6 +3,7 @@
 <button
     color="primary"
     mat-raised-button
+    [disabled]="ruleList == null"
     (click)="createRule()">ADD RULE
 </button>
 
@@ -16,10 +17,12 @@
         [@draggedOver]="rule === draggedOverRule && rule !== draggedRule"
         [@dragged]="rule === draggedRule"
         [draggable]="true"
-        (dragstart)="onRuleDragStart(rule, $event)"
+        (dragstart)="onRuleDragStart(rule)"
         (dragenter)="onRuleDragEnter(rule)"
         (dragleave)="onRuleDragLeave(rule)"
-        (dragend)="onRuleDragEnd()">
+        (dragover)="$event.preventDefault()"
+        (dragend)="onRuleDragEnd()"
+        (drop)="onRuleDrop(rule)">
 
         <mat-card [style.pointer-events]="draggedOverRule ? 'none' : null">
 
