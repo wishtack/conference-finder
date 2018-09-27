@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
-import { ComponentRecipe, DynamicComponentLoader } from '../../../lib/dynamic-component-loader';
+import { distinctUntilChanged, map } from 'rxjs/operators';
+import { ComponentLocation } from '../../../lib/dynamic-component-loader/dynamic-component-loader';
 import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
 import { Conference } from '../conference';
 import { ConferenceRepository } from '../conference-repository';
@@ -14,30 +14,22 @@ import { ConferenceRepository } from '../conference-repository';
 })
 export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
-    componentRecipe$: Observable<ComponentRecipe<any>>;
+    componentLocation$: Observable<ComponentLocation>;
     conferenceList: Conference[];
 
     private _scavenger = new Scavenger(this);
 
     constructor(
         private _conferenceRepository: ConferenceRepository,
-        private _currentConfigurationService: CurrentConfigurationService,
-        private _dynamicComponentLoader: DynamicComponentLoader
+        private _currentConfigurationService: CurrentConfigurationService
     ) {
-    }
 
-    ngOnInit() {
-
-        this._conferenceRepository.getConferenceList()
-            .pipe(this._scavenger.collectByKey('conference-list'))
-            .subscribe(conferenceList => this.conferenceList = conferenceList);
-
-        this.componentRecipe$ = this._currentConfigurationService.watchCurrentConfiguration()
+        this.componentLocation$ = this._currentConfigurationService.watchCurrentConfiguration()
             .pipe(
                 map(configuration => configuration.conferenceListDisplayMode),
                 /* Avoids useless calls to `getComponentRecipe`. */
                 distinctUntilChanged(),
-                switchMap(conferenceListDisplayMode => {
+                map(conferenceListDisplayMode => {
 
                     const defaultComponentLocation = {
                         moduleId: 'conference-list-table',
@@ -51,10 +43,18 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
                         }
                     }[conferenceListDisplayMode] || defaultComponentLocation;
 
-                    return this._dynamicComponentLoader.getComponentRecipe(componentLocation);
+                    return componentLocation;
 
                 })
             );
+
+    }
+
+    ngOnInit() {
+
+        this._conferenceRepository.getConferenceList()
+            .pipe(this._scavenger.collectByKey('conference-list'))
+            .subscribe(conferenceList => this.conferenceList = conferenceList);
 
     }
 

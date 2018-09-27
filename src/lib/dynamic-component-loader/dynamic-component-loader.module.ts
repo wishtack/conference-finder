@@ -5,14 +5,25 @@
  * $Id: $
  */
 
+import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { ROUTES } from '@angular/router';
+import { DynamicModule } from 'ng-dynamic-component';
 import { DYNAMIC_COMPONENT_MODULE_REGISTRY } from './_internals';
+import { DynamicComponent } from './dynamic/dynamic.component';
 
 
 @NgModule({
-    declarations: [],
-    exports: []
+    declarations: [
+        DynamicComponent
+    ],
+    exports: [
+        DynamicComponent
+    ],
+    imports: [
+        CommonModule,
+        DynamicModule.withComponents([])
+    ]
 })
 export class DynamicComponentLoaderModule {
 

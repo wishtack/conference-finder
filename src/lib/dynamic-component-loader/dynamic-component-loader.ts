@@ -15,7 +15,7 @@ import {
     NgModuleFactoryLoader,
     Type
 } from '@angular/core';
-import { defer, Observable } from 'rxjs';
+import { defer, Observable, of } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './_internals';
 
@@ -50,9 +50,15 @@ export class DynamicComponentLoader {
     ) {
     }
 
-    getComponentRecipe<T = any>({moduleId, selector}: ComponentLocation): Observable<ComponentRecipe<T>> {
+    getComponentRecipe<T = any>(componentLocation: ComponentLocation): Observable<ComponentRecipe<T>> {
+
+        if (componentLocation == null) {
+            return of(null);
+        }
 
         return defer(() => {
+
+            const {moduleId, selector} = componentLocation;
 
             /* @TODO: Trigger error if multiple modules with same id and different pathes. */
             const moduleRegistryItem = this._moduleRegistry

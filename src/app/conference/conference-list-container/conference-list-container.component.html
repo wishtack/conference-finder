@@ -2,7 +2,4 @@
     <li *ngFor="let conference of conferenceList">{{ conference.name }}</li>
 </ul>
 
-<ng-container *ngIf="componentRecipe$ | async as componentRecipe">
-    <ng-container *ngComponentOutlet="componentRecipe.componentType;
-                                      ngModuleFactory: componentRecipe.ngModuleFactory"></ng-container>
-</ng-container>
+<wt-dynamic [location]="componentLocation$ | async"></wt-dynamic>
