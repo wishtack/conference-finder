@@ -52,7 +52,7 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
     }
 
     removeRule(ruleId: any) {
-        this._ruleRepository.removeRule(ruleId);
+        this._ruleRepository.removeRule(ruleId, this.ruleList);
     }
 
     onRuleDragStart(rule: Rule) {
@@ -99,13 +99,20 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
                     position: index
                 });
             });
-        setTimeout(() => {
-            this.ruleList = sortedRuleList;
-        });
+
+        this.ruleList = sortedRuleList;
+
+        this._ruleRepository.updateRulePositionList(sortedRuleList);
+
+        this._resetDragState();
 
     }
 
     onRuleDragEnd() {
+        this._resetDragState();
+    }
+
+    private _resetDragState() {
         this.draggedRule = null;
         this.draggedOverRule = null;
     }

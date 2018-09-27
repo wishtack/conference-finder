@@ -62,9 +62,27 @@ export class RuleRepository {
 
     }
 
-    async removeRule(ruleId: any) {
+    async updateRulePositionList(ruleList: Rule[]) {
 
-        return this._collection.doc<Rule>(ruleId).delete();
+        const batch = this._angularFirestore.firestore.batch();
+
+        for (const rule of ruleList) {
+            batch.update(this._collection.doc<Rule>(rule.id).ref, {
+                position: rule.position
+            });
+        }
+
+        return batch.commit();
+
+    }
+
+    async removeRule(ruleId: string, ruleList: Rule[]) {
+
+        await this._collection.doc<Rule>(ruleId).delete();
+
+        ruleList = ruleList.filter(rule => rule.id !== ruleId);
+
+        await this.updateRulePositionList(ruleList);
 
     }
 
