@@ -7,13 +7,17 @@ import { RuleRepository } from '../rule-repository';
 
 @Component({
     animations: [
+        trigger('enterLeave', [
+            state('void', style({height: 0, transform: 'scaleY(0)'})),
+            transition('void <=> *', animate('400ms ease-in'))
+        ]),
         trigger('dragged', [
             state('true', style({filter: 'blur(5px)'})),
-            transition('false <=> true', animate('300ms ease-in'))
+            transition('false <=> true', animate('400ms ease-in'))
         ]),
         trigger('draggedOver', [
             state('true', style({'padding-top': '200px'})),
-            transition('false <=> true', animate('200ms ease-in'))
+            transition('false <=> true', animate('400ms ease-in'))
         ])
     ],
     selector: 'wt-rule-dashboard',
@@ -100,9 +104,13 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
                 });
             });
 
-        this.ruleList = sortedRuleList;
 
-        this._ruleRepository.updateRulePositionList(sortedRuleList);
+        /* @HACK: Remove rule and add the new one in two ticks in order to avoid angular animation issues. */
+        this.ruleList = filteredRuleList;
+        setTimeout(() => {
+            this.ruleList = sortedRuleList;
+            this._ruleRepository.updateRulePositionList(sortedRuleList);
+        });
 
         this._resetDragState();
 
@@ -110,6 +118,10 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
 
     onRuleDragEnd() {
         this._resetDragState();
+    }
+
+    ruleTracker(index: number, rule: Rule) {
+        return rule.id;
     }
 
     private _resetDragState() {
