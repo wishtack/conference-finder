@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { ConferenceSearchFormComponent } from './conference-search-form.component';
 
 @NgModule({
@@ -13,7 +15,10 @@ import { ConferenceSearchFormComponent } from './conference-search-form.componen
         ConferenceSearchFormComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        ReactiveFormsModule
     ]
 })
 export class ConferenceSearchFormModule {

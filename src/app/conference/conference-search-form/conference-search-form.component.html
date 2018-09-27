@@ -1,3 +1,13 @@
-<p>
-    conference-search-form works!
-</p>
+<form [formGroup]="conferenceSearchForm">
+
+    <mat-form-field>
+        <mat-select placeholder="Topic">
+            <mat-option
+                *ngFor="let topic of topicList"
+                [value]="topic.id">
+                {{topic.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</form>

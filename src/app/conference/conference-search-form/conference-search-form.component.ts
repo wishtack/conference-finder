@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ConferenceRepository } from '../conference-repository';
 
 @Component({
     selector: 'wt-conference-search-form',
@@ -8,6 +9,12 @@ import { FormGroup } from '@angular/forms';
 })
 export class ConferenceSearchFormComponent {
 
-    conferenceSearchForm = new FormGroup({});
+    conferenceSearchForm = new FormGroup({
+        topic: new FormControl()
+    });
+    topicList = this._conferenceRepository.topicList;
+
+    constructor(private _conferenceRepository: ConferenceRepository) {
+    }
 
 }

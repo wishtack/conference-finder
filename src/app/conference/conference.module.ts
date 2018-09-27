@@ -20,6 +20,10 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
     imports: [
         CommonModule,
         DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-search-form',
+            modulePath: './conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
+        }),
+        DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-table',
             modulePath: './conference-list-table/conference-list-table.module#ConferenceListTableModule'
         }),
