@@ -7,7 +7,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DynamicComponentLoaderModule } from '../../lib/dynamic-component-loader.module';
+import { DynamicComponentLoaderModule } from '../../lib/dynamic-component-loader';
 import { ConferenceListContainerComponent } from './conference-list-container/conference-list-container.component';
 
 @NgModule({

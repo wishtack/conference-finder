@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { defer, Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
-import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './internals';
+import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './_internals';
 
 export interface ComponentRecipe<T> {
     componentType: Type<T>;

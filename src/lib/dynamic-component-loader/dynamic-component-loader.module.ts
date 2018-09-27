@@ -7,7 +7,7 @@
 
 import { ModuleWithProviders, NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { ROUTES } from '@angular/router';
-import { DYNAMIC_COMPONENT_MODULE_REGISTRY } from './internals';
+import { DYNAMIC_COMPONENT_MODULE_REGISTRY } from './_internals';
 
 
 @NgModule({
