@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Conference } from '../conference';
 import { ConferenceListComponent } from '../conference-list-component';
 
@@ -7,7 +7,7 @@ import { ConferenceListComponent } from '../conference-list-component';
     templateUrl: './conference-list-table.component.html',
     styleUrls: ['./conference-list-table.component.scss']
 })
-export class ConferenceListTableComponent implements ConferenceListComponent, OnInit {
+export class ConferenceListTableComponent implements ConferenceListComponent {
 
     @Input() conferenceList: Conference[];
 
@@ -16,11 +16,5 @@ export class ConferenceListTableComponent implements ConferenceListComponent, On
         'city',
         'country'
     ];
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 
 }
