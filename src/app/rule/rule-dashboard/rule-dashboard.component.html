@@ -10,37 +10,48 @@
     fxLayout="column"
     fxLayoutAlign="start center">
 
-    <mat-card
+    <div
         *ngFor="let rule of ruleList; trackBy:ruleIdTracker"
-        class="wt-rule-card">
+        class="wt-rule-card"
+        [@draggedOver]="rule === draggedOverRule && rule !== draggedRule"
+        [@dragged]="rule === draggedRule"
+        [draggable]="true"
+        (dragstart)="onRuleDragStart(rule, $event)"
+        (dragenter)="onRuleDragEnter(rule)"
+        (dragleave)="onRuleDragLeave(rule)"
+        (dragend)="onRuleDragEnd()">
 
-        <mat-card-header>
+        <mat-card [style.pointer-events]="draggedOverRule ? 'none' : null">
 
-            <mat-card-title>
+            <mat-card-header>
 
-                <button [matMenuTriggerFor]="menu" aria-label="Toggle menu" class="more-button" mat-icon-button>
-                    <mat-icon>more_vert</mat-icon>
-                </button>
+                <mat-card-title>
 
-                <mat-menu #menu="matMenu" xPosition="before">
-                    <button
-                        mat-menu-item
-                        (click)=removeRule(rule.id)>Remove
+                    <button [matMenuTriggerFor]="menu" aria-label="Toggle menu" class="more-button" mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
                     </button>
-                </mat-menu>
 
-            </mat-card-title>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button
+                            mat-menu-item
+                            (click)=removeRule(rule.id)>Remove
+                        </button>
+                    </mat-menu>
 
-        </mat-card-header>
+                </mat-card-title>
 
-        <mat-card-content class="dashboard-card-content">
+            </mat-card-header>
 
-            <wt-rule-form
-                [rule]="rule"
-                (ruleChange)="onRuleChange(rule.id, $event)"></wt-rule-form>
+            <mat-card-content class="dashboard-card-content">
 
-        </mat-card-content>
+                <wt-rule-form
+                    [rule]="rule"
+                    (ruleChange)="onRuleChange(rule.id, $event)"></wt-rule-form>
 
-    </mat-card>
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
 
 </div>
