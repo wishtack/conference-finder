@@ -16,7 +16,7 @@ import { RuleRepository } from '../rule-repository';
             transition('false <=> true', animate('400ms ease-in'))
         ]),
         trigger('draggedOver', [
-            state('true', style({'padding-top': '200px'})),
+            state('true', style({marginTop: '200px', transform: 'rotateX(50deg)'})),
             transition('false <=> true', animate('400ms ease-in'))
         ])
     ],
