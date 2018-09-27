@@ -1,5 +1,3 @@
-<ul>
-    <li *ngFor="let conference of conferenceList">{{ conference.name }}</li>
-</ul>
-
-<wt-dynamic [location]="componentLocation$ | async"></wt-dynamic>
+<wt-dynamic
+    [inputs]="inputs"
+    [location]="componentLocation$ | async"></wt-dynamic>

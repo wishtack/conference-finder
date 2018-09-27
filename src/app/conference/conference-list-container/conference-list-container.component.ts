@@ -15,7 +15,9 @@ import { ConferenceRepository } from '../conference-repository';
 export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     componentLocation$: Observable<ComponentLocation>;
-    conferenceList: Conference[];
+    inputs: {
+        conferenceList?: Conference[]
+    } = {};
 
     private _scavenger = new Scavenger(this);
 
@@ -54,7 +56,10 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
         this._conferenceRepository.getConferenceList()
             .pipe(this._scavenger.collectByKey('conference-list'))
-            .subscribe(conferenceList => this.conferenceList = conferenceList);
+            .subscribe(conferenceList => this.inputs = {
+                ...this.inputs,
+                conferenceList
+            });
 
     }
 
