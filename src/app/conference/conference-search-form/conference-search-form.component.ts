@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,9 +10,9 @@ import { ConferenceRepository } from '../conference-repository';
     templateUrl: './conference-search-form.component.html',
     styleUrls: ['./conference-search-form.component.scss']
 })
-export class ConferenceSearchFormComponent {
+export class ConferenceSearchFormComponent implements OnChanges {
 
-    @Input() conferenceFilter;
+    @Input() conferenceFilter: ConferenceFilter;
     @Output() conferenceFilterChange: Observable<ConferenceFilter>;
 
     conferenceSearchForm = new FormGroup({
@@ -29,6 +29,22 @@ export class ConferenceSearchFormComponent {
                     topicId: value.topic
                 });
             }));
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.conferenceFilter != null) {
+
+            const topicId = this.conferenceFilter != null ? this.conferenceFilter.topicId : null;
+
+            this.conferenceSearchForm.reset({
+                topic: topicId
+            }, {
+                emitEvent: false
+            });
+
+        }
 
     }
 
