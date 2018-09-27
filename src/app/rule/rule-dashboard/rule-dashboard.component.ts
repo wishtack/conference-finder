@@ -63,7 +63,9 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
         this.draggedRule = rule;
     }
 
-    onRuleDragEnter(rule: Rule) {
+    onRuleDragEnter(rule: Rule, $event: DragEvent) {
+        /* https://github.com/timruffles/mobile-drag-drop/blob/master/README.md#polyfill-requires-dragenter-listener */
+        $event.preventDefault();
         this.draggedOverRule = rule;
     }
 

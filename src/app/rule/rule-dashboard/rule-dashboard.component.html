@@ -18,7 +18,7 @@
         @enterLeave
         [draggable]="!isFirstRule"
         (dragstart)="onRuleDragStart(rule)"
-        (dragenter)="onRuleDragEnter(rule)"
+        (dragenter)="onRuleDragEnter(rule, $event)"
         (dragleave)="onRuleDragLeave(rule)"
         (dragover)="$event.preventDefault()"
         (dragend)="onRuleDragEnd()"
