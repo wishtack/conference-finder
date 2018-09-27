@@ -7,21 +7,15 @@
 
 import { Injectable } from '@angular/core';
 import { Condition } from './condition';
-import { conditionAudiencePercentageTypeInfo } from './condition-audience-percentage-form/condition-audience-percentage-type-info';
-import { ConditionTypeInfo } from './condition-type-info';
-
-export function unknownConditionType(conditionType: string) {
-    return new Error(`Unknown condition type '${conditionType}'.`);
-}
+import { ConditionRegistry } from './condition-registry';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ConditionFactory {
 
-    private _conditionTypeInfoList = [
-        conditionAudiencePercentageTypeInfo
-    ];
+    constructor(private _conditionRegistry: ConditionRegistry) {
+    }
 
     createCondition(conditionData: Partial<Condition>): Condition {
 
@@ -29,36 +23,9 @@ export class ConditionFactory {
             return null;
         }
 
-        const conditionClass = this._getConditionTypeInfo(conditionData.type).conditionClass;
+        const conditionClass = this._conditionRegistry.getConditionClass(conditionData.type);
 
         return new conditionClass(conditionData);
-
-    }
-
-    getConditionTypeInfoList(): ConditionTypeInfo[] {
-        return this._conditionTypeInfoList;
-    }
-
-    getConditionFormComponentClass(conditionType: string) {
-
-        if (conditionType == null) {
-            return null;
-        }
-
-        return this._getConditionTypeInfo(conditionType).conditionFormComponentClass;
-
-    }
-
-    private _getConditionTypeInfo(conditionType: string) {
-
-        const conditionTypeInfo = this._conditionTypeInfoList
-            .find(_conditionTypeInfo => _conditionTypeInfo.type === conditionType);
-
-        if (conditionTypeInfo == null) {
-            throw unknownConditionType(conditionType);
-        }
-
-        return conditionTypeInfo;
 
     }
 

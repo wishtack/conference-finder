@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { AbstractConditionFormComponent } from '../abstract-condition-form-component';
 import { Condition } from '../condition';
 import { ConditionFactory } from '../condition-factory';
+import { ConditionRegistry } from '../condition-registry';
 import { ConditionTypeInfo } from '../condition-type-info';
 
 @Component({
@@ -26,8 +27,11 @@ export class ConditionFormComponent implements OnChanges, OnInit {
         conditionChange: condition => this.conditionChange.emit(condition)
     };
 
-    constructor(private _conditionFactory: ConditionFactory) {
-        this.conditionTypeInfoList = this._conditionFactory.getConditionTypeInfoList();
+    constructor(
+        private _conditionFactory: ConditionFactory,
+        private _conditionRegistry: ConditionRegistry
+    ) {
+        this.conditionTypeInfoList = this._conditionRegistry.getConditionTypeInfoList();
     }
 
     ngOnInit() {
@@ -55,7 +59,7 @@ export class ConditionFormComponent implements OnChanges, OnInit {
                 emitEvent: false
             });
 
-            this.conditionFormComponentClass = this._conditionFactory.getConditionFormComponentClass(conditionType);
+            this.conditionFormComponentClass = this._conditionRegistry.getConditionFormComponentClass(conditionType);
 
             this.inputs = {
                 condition: this.condition
