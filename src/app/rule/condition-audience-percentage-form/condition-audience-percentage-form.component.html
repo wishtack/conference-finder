@@ -1,5 +1,5 @@
 <mat-slider
     [formControl]="audiencePercentageControl"
+    (mousedown)="$event.preventDefault(); $event.stopPropagation()"
     class="wt-audience-percentage-slider"
-    thumbLabel
-    tickInterval="1"></mat-slider>
+    thumbLabel></mat-slider>
