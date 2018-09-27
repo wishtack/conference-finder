@@ -1,3 +1,9 @@
 <ul>
-    <li *ngFor="let conference of conferenceList">{{ conference.name }}</li>
+    <li
+        *ngFor="let conference of conferenceList"
+        class="wt-conference">
+        <div>{{ conference.name }}</div>
+        <div class="wt-conference__location">({{ conference.city }} | {{ conference.country }})</div>
+        <div>{{ conference.startDate | date }} / {{ conference.endDate | date }}</div>
+    </li>
 </ul>
