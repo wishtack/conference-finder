@@ -15,6 +15,26 @@ import { Conference } from './conference';
 })
 export class ConferenceRepository {
 
+    topicList = [
+        {id: 'android', label: 'Android'},
+        {id: 'css', label: 'CSS'},
+        {id: 'data', label: 'Data'},
+        {id: 'devops', label: 'DevOps'},
+        {id: 'elixir', label: 'Elixir'},
+        {id: 'general', label: 'General'},
+        {id: 'golang', label: 'Go'},
+        {id: 'graphql', label: 'GraphQL'},
+        {id: 'ios', label: 'iOS'},
+        {id: 'javascript', label: 'JavScript'},
+        {id: 'php', label: 'PHP'},
+        {id: 'python', label: 'Python'},
+        {id: 'ruby', label: 'Ruby'},
+        {id: 'rust', label: 'Rust'},
+        {id: 'security', label: 'Security'},
+        {id: 'tech-comm', label: 'Technical Communication'},
+        {id: 'ux', label: 'UX'},
+    ];
+
     constructor(private _httpClient: HttpClient) {
     }
 
