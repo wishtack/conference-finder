@@ -1,6 +1,7 @@
 <wt-dynamic
-    [location]="{moduleId: 'conference-search-form', selector: 'wt-conference-search-form'}"></wt-dynamic>
+    [location]="{moduleId: 'conference-search-form', selector: 'wt-conference-search-form'}"
+    [outputs]="searchOutputs"></wt-dynamic>
 
 <wt-dynamic
-    [inputs]="inputs"
+    [inputs]="{conferenceList: conferenceList}"
     [location]="componentLocation$ | async"></wt-dynamic>

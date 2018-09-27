@@ -1,7 +1,9 @@
 <form [formGroup]="conferenceSearchForm">
 
     <mat-form-field>
-        <mat-select placeholder="Topic">
+        <mat-select
+            formControlName="topic"
+            placeholder="Topic">
             <mat-option
                 *ngFor="let topic of topicList"
                 [value]="topic.id">

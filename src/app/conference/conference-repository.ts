@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Conference } from './conference';
+import { ConferenceFilter } from './conference-filter';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +26,7 @@ export class ConferenceRepository {
         {id: 'golang', label: 'Go'},
         {id: 'graphql', label: 'GraphQL'},
         {id: 'ios', label: 'iOS'},
-        {id: 'javascript', label: 'JavScript'},
+        {id: 'javascript', label: 'JavaScript'},
         {id: 'php', label: 'PHP'},
         {id: 'python', label: 'Python'},
         {id: 'ruby', label: 'Ruby'},
@@ -38,9 +39,14 @@ export class ConferenceRepository {
     constructor(private _httpClient: HttpClient) {
     }
 
-    getConferenceList() {
-        return this._httpClient.get<Partial<Conference>[]>('https://raw.githubusercontent.com/tech-conferences/conference-data/master/conferences/2019/javascript.json')
+    getConferenceList(conferenceFilter: ConferenceFilter) {
+
+        const url = `https://raw.githubusercontent.com/tech-conferences/conference-data/master/conferences`
+            + `/2019/${encodeURIComponent(conferenceFilter.topicId)}.json`;
+
+        return this._httpClient.get<Partial<Conference>[]>(url)
             .pipe(map(conferenceDataList => conferenceDataList.map(data => new Conference(data))));
+
     }
 
 }
