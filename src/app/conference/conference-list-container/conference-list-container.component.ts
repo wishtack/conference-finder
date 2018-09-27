@@ -19,6 +19,17 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     private _scavenger = new Scavenger(this);
 
+    private _conferenceListComponentLocationDict = {
+        grid: {
+            moduleId: 'conference-list-grid',
+            selector: 'wt-conference-list-grid'
+        },
+        table: {
+            moduleId: 'conference-list-table',
+            selector: 'wt-conference-list-table'
+        }
+    };
+
     constructor(
         private _conferenceRepository: ConferenceRepository,
         private _currentConfigurationService: CurrentConfigurationService
@@ -31,19 +42,8 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
                 distinctUntilChanged(),
                 map(conferenceListDisplayMode => {
 
-                    const defaultComponentLocation = {
-                        moduleId: 'conference-list-table',
-                        selector: 'wt-conference-list-table'
-                    };
-
-                    const componentLocation = {
-                        'grid': {
-                            moduleId: 'conference-list-grid',
-                            selector: 'wt-conference-list-grid'
-                        }
-                    }[conferenceListDisplayMode] || defaultComponentLocation;
-
-                    return componentLocation;
+                    return this._conferenceListComponentLocationDict[conferenceListDisplayMode]
+                        || this._conferenceListComponentLocationDict.table;
 
                 })
             );
