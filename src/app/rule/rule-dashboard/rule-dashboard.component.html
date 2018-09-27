@@ -12,7 +12,7 @@
     fxLayoutAlign="start center">
 
     <div
-        *ngFor="let rule of ruleList; trackBy:ruleIdTracker"
+        *ngFor="let rule of ruleList"
         class="wt-rule-card"
         [@draggedOver]="rule === draggedOverRule && rule !== draggedRule"
         [@dragged]="rule === draggedRule"

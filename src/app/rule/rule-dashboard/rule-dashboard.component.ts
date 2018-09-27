@@ -8,15 +8,13 @@ import { RuleRepository } from '../rule-repository';
 @Component({
     animations: [
         trigger('dragged', [
-            state('true', style({
-                filter: 'blur(5px)'
-            })),
+            state('true', style({filter: 'blur(5px)'})),
             transition('false <=> true', animate('300ms ease-in'))
         ]),
         trigger('draggedOver', [
             state('true', style({'padding-top': '200px'})),
-            transition('* => *', animate('200ms ease-in'))
-        ]),
+            transition('false <=> true', animate('200ms ease-in'))
+        ])
     ],
     selector: 'wt-rule-dashboard',
     templateUrl: './rule-dashboard.component.html',
@@ -57,10 +55,6 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
         this._ruleRepository.removeRule(ruleId);
     }
 
-    ruleIdTracker(index: number, rule: Rule) {
-        return rule.id;
-    }
-
     onRuleDragStart(rule: Rule) {
         this.draggedRule = rule;
     }
@@ -82,8 +76,33 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
     }
 
     onRuleDrop(rule: Rule) {
-        console.log(this.draggedRule);
-        console.log(rule);
+
+        /* Remove dragged rule. */
+        const filteredRuleList = this.ruleList.filter(_rule => _rule !== this.draggedRule);
+
+        const targetRuleIndex = filteredRuleList.indexOf(rule);
+
+        if (targetRuleIndex === -1) {
+            return;
+        }
+
+        /* Insert the dragged rule. */
+        const sortedRuleList = [
+            ...filteredRuleList.slice(0, targetRuleIndex),
+            this.draggedRule,
+            ...filteredRuleList.slice(targetRuleIndex)
+        ]
+        /* Update position. */
+            .map((_rule, index) => {
+                return new Rule({
+                    ..._rule,
+                    position: index
+                });
+            });
+        setTimeout(() => {
+            this.ruleList = sortedRuleList;
+        });
+
     }
 
     onRuleDragEnd() {
