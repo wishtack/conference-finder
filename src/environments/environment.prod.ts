@@ -1,6 +1,7 @@
-import { commonEnvironment } from './environment.common';
+import { commonEnvironment } from './common-environment';
 
 export const environment = {
-    ...commonEnvironment,
+    /* Object literal spreading (...commonEnvironment) doesn't make it through AOT. */
+    firebase: commonEnvironment.firebase,
     production: true
 };
