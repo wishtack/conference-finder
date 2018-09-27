@@ -15,7 +15,7 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { SharedModule } from '../shared/shared.module';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
-import { ConditionFormComponent } from './condition-form/condition-form.component';
+import { ConditionFormContainerComponent } from './condition-form-container/condition-form-container.component';
 import { RuleDashboardComponent } from './rule-dashboard/rule-dashboard.component';
 import { RuleFormComponent } from './rule-form/rule-form.component';
 
@@ -23,7 +23,7 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
     declarations: [
         RuleDashboardComponent,
         RuleFormComponent,
-        ConditionFormComponent,
+        ConditionFormContainerComponent,
         ConditionAudiencePercentageFormComponent
     ],
     exports: [

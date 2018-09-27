@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Condition } from './condition';
 
-export interface AbstractConditionFormComponent {
+export interface ConditionFormComponent {
     condition: Condition;
     conditionChange: Observable<Condition>;
 }

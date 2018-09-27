@@ -1,22 +1,22 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, Type } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { AbstractConditionFormComponent } from '../abstract-condition-form-component';
 import { Condition } from '../condition';
 import { ConditionFactory } from '../condition-factory';
+import { ConditionFormComponent } from '../condition-form-component';
 import { ConditionRegistry } from '../condition-registry';
 import { ConditionTypeInfo } from '../condition-type-info';
 
 @Component({
-    selector: 'wt-condition-form',
-    templateUrl: './condition-form.component.html',
-    styleUrls: ['./condition-form.component.scss']
+    selector: 'wt-condition-form-container',
+    templateUrl: './condition-form-container.component.html',
+    styleUrls: ['./condition-form-container.component.scss']
 })
-export class ConditionFormComponent implements OnChanges, OnInit {
+export class ConditionFormContainerComponent implements OnChanges, OnInit {
 
     @Input() condition: Condition;
     @Output() conditionChange = new EventEmitter<Condition>();
 
-    conditionFormComponentClass: Type<AbstractConditionFormComponent>;
+    conditionFormComponentClass: Type<ConditionFormComponent>;
     conditionTypeControl = new FormControl();
     conditionTypeInfoList: ConditionTypeInfo[];
 
