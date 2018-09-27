@@ -4,5 +4,10 @@
     [outputs]="searchOutputs"></wt-dynamic>
 
 <wt-dynamic
+    [location]="{moduleId: 'conference-search-links', selector: 'wt-conference-search-links'}"
+    [inputs]="{conferenceFilter: conferenceFilter}"
+    [outputs]="searchOutputs"></wt-dynamic>
+
+<wt-dynamic
     [inputs]="{conferenceList: conferenceList}"
     [location]="componentLocation$ | async"></wt-dynamic>

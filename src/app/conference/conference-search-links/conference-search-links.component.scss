@@ -1,0 +1,13 @@
+
+.wt-topic-link {
+    color: palevioletred;
+    cursor: pointer;
+    min-width: 80px;
+    text-decoration: underline;
+}
+
+.wt-topic-link--selected {
+    color: #aaaaaa;
+    cursor: default;
+    text-decoration: none;
+}

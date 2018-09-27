@@ -24,6 +24,10 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
             modulePath: './conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
         }),
         DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-search-links',
+            modulePath: './conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
+        }),
+        DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-table',
             modulePath: './conference-list-table/conference-list-table.module#ConferenceListTableModule'
         }),
