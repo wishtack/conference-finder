@@ -79,7 +79,12 @@ export class RuleDashboardComponent implements OnDestroy, OnInit {
 
     }
 
-    onRuleDrop(rule: Rule) {
+    onRuleDrop(rule: Rule, isFirstRule: boolean) {
+
+        /* Do not replace default rule. */
+        if (isFirstRule) {
+            return;
+        }
 
         /* Remove dragged rule. */
         const filteredRuleList = this.ruleList.filter(_rule => _rule !== this.draggedRule);

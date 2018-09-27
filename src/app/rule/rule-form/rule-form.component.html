@@ -1,8 +1,9 @@
 <wt-condition-form
     (conditionChange)="onConditionChange($event)"
+    *ngIf="shouldShowConditions"
     [condition]="rule.condition"></wt-condition-form>
 
-<hr>
+<hr *ngIf="shouldShowConditions">
 
 <wt-configuration-form
     [configuration]="rule.configuration"

@@ -13,36 +13,46 @@
     fxLayoutAlign="start center">
 
     <div
-        *ngFor="let rule of ruleList; trackBy:ruleTracker"
+        *ngFor="let rule of ruleList; let isFirstRule=first; trackBy:ruleTracker"
         class="wt-rule-card"
         @enterLeave
-        [draggable]="true"
+        [draggable]="!isFirstRule"
         (dragstart)="onRuleDragStart(rule)"
         (dragenter)="onRuleDragEnter(rule)"
         (dragleave)="onRuleDragLeave(rule)"
         (dragover)="$event.preventDefault()"
         (dragend)="onRuleDragEnd()"
-        (drop)="onRuleDrop(rule)">
+        (drop)="onRuleDrop(rule, isFirstRule)">
 
         <mat-card
             [@dragged]="rule === draggedRule"
             [@draggedOver]="rule === draggedOverRule && rule !== draggedRule"
             [style.pointer-events]="draggedOverRule ? 'none' : null">
 
-            <mat-card-header>
+            <mat-card-header fxLayoutAlign="center">
 
                 <mat-card-title>
 
-                    <button [matMenuTriggerFor]="menu" aria-label="Toggle menu" class="more-button" mat-icon-button>
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
+                    <h2 *ngIf="isFirstRule">Default configuration</h2>
 
-                    <mat-menu #menu="matMenu" xPosition="before">
+                    <ng-container *ngIf="!isFirstRule">
+
                         <button
-                            mat-menu-item
-                            (click)=removeRule(rule.id)>Remove
+                            aria-label="Toggle menu"
+                            class="more-button"
+                            mat-icon-button
+                            [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
                         </button>
-                    </mat-menu>
+
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button
+                                mat-menu-item
+                                (click)=removeRule(rule.id)>Remove
+                            </button>
+                        </mat-menu>
+
+                    </ng-container>
 
                 </mat-card-title>
 
@@ -52,6 +62,7 @@
 
                 <wt-rule-form
                     [rule]="rule"
+                    [shouldShowConditions]="!isFirstRule"
                     (ruleChange)="onRuleChange(rule.id, $event)"></wt-rule-form>
 
             </mat-card-content>

@@ -11,6 +11,7 @@ import { Rule } from '../rule';
 export class RuleFormComponent {
 
     @Input() rule: Rule;
+    @Input() shouldShowConditions = true;
     @Output() ruleChange = new EventEmitter<Rule>();
 
     onConditionChange(condition: Condition) {
