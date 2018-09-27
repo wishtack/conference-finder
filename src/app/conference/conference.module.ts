@@ -24,8 +24,8 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
             modulePath: './conference-list-grid/conference-list-grid.module#ConferenceListGridModule'
         }),
         DynamicComponentLoaderModule.declareModule({
-            moduleId: 'conference-list-table',
-            modulePath: './conference-list-table/conference-list-table.module#ConferenceListTableModule'
+            moduleId: 'conference-list-v1',
+            modulePath: './conference-list-v1/conference-list-v1.module#ConferenceListV1Module'
         })
     ]
 })

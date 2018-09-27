@@ -25,8 +25,8 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
             selector: 'wt-conference-list-grid'
         },
         table: {
-            moduleId: 'conference-list-table',
-            selector: 'wt-conference-list-table'
+            moduleId: 'conference-list-v1',
+            selector: 'wt-conference-list-v1'
         }
     };
 
