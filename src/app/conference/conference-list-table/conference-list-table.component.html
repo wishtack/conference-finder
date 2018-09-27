@@ -1,0 +1,31 @@
+<table
+    [dataSource]="conferenceList"
+    class="mat-elevation-z8"
+    mat-table>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let conference" mat-cell> {{conference.name}} </td>
+    </ng-container>
+
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+        <th *matHeaderCellDef mat-header-cell> City</th>
+        <td *matCellDef="let conference" mat-cell>
+            <span>{{ conference.city }}</span>
+        </td>
+    </ng-container>
+
+    <!-- Country Column -->
+    <ng-container matColumnDef="country">
+        <th *matHeaderCellDef mat-header-cell> Country</th>
+        <td *matCellDef="let conference" mat-cell>
+            <span>{{ conference.country }}</span>
+        </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+</table>

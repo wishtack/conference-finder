@@ -22,9 +22,9 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
     private _scavenger = new Scavenger(this);
 
     private _conferenceListComponentLocationDict = {
-        grid: {
-            moduleId: 'conference-list-grid',
-            selector: 'wt-conference-list-grid'
+        table: {
+            moduleId: 'conference-list-table',
+            selector: 'wt-conference-list-table'
         },
         v1: {
             moduleId: 'conference-list-v1',
