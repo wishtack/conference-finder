@@ -4,3 +4,8 @@ $dark-primary: mat-palette($mat-indigo);
 $dark-accent: mat-palette($mat-pink, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+/* Export theme colors. */
+$primary: mat-color($dark-primary);
+$accent: mat-color($dark-accent);
+$warn: mat-color($dark-warn);
