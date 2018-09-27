@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ComponentLocation } from '../../../lib/dynamic-component-loader/dynamic-component-loader';
 import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
 import { Conference } from '../conference';
@@ -43,12 +43,9 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
         this.componentLocation$ = this._currentConfigurationService.watchCurrentConfiguration()
             .pipe(
-                map(configuration => configuration.conferenceListDisplayMode),
-                /* Avoids useless calls to `getComponentRecipe`. */
-                distinctUntilChanged(),
-                map(conferenceListDisplayMode => {
+                map(configuration => {
 
-                    return this._conferenceListComponentLocationDict[conferenceListDisplayMode]
+                    return this._conferenceListComponentLocationDict[configuration.conferenceListDisplayMode]
                         || this._conferenceListComponentLocationDict.v1;
 
                 })
