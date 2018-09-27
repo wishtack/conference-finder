@@ -21,11 +21,11 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         CommonModule,
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-grid',
-            modulePath: '../conference-list-grid/conference-list-grid.module#ConferenceListGridModule'
+            modulePath: './conference-list-grid/conference-list-grid.module#ConferenceListGridModule'
         }),
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-table',
-            modulePath: '../conference-list-table/conference-list-table.module#ConferenceListTableModule'
+            modulePath: './conference-list-table/conference-list-table.module#ConferenceListTableModule'
         })
     ]
 })
