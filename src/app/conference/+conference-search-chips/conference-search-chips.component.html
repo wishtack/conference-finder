@@ -5,11 +5,11 @@
         fxLayoutAlign="center">
 
         <mat-chip
-            (click)="selectTopic(topic.id)"
             *ngFor="let topic of topicList"
+            (click)="selectTopic(topic.id)"
+            class="wt-topic-chip"
             [selectable]="topic.id !== conferenceFilter.topicId"
             [selected]="topic.id === conferenceFilter.topicId"
-            class="wt-topic-chip"
             color="accent">{{ topic.label }}</mat-chip>
 
     </div>

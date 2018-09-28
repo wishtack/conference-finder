@@ -4,5 +4,18 @@
     [outputs]="searchOutputs"></wt-dynamic>
 
 <wt-dynamic
+    *ngIf="conferenceList?.length > 0"
     [location]="conferenceListComponentLocation$ | async"
     [inputs]="{conferenceList: conferenceList}"></wt-dynamic>
+
+<section
+    *ngIf="conferenceList?.length === 0">
+
+    <img
+        alt="not found"
+        class="wt-not-found"
+        [src]="notFoundPictureUri">
+
+    <h1>Seems like there is no woofcoming event.</h1>
+
+</section>

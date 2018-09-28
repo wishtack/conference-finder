@@ -20,10 +20,11 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     conferenceFilter: ConferenceFilter;
     conferenceList: Conference[];
-
     searchOutputs = {
         conferenceFilterChange: (conferenceFilter: ConferenceFilter) => this.onConferenceFilterChange(conferenceFilter)
     };
+
+    notFoundPictureUri = require('./not-found.jpg');
 
     private _scavenger = new Scavenger(this);
 
