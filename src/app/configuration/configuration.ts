@@ -8,8 +8,10 @@
 export class Configuration {
 
     conferenceListDisplayMode: string;
+    conferenceSearchDisplayMode: string;
 
     constructor(args: Partial<Configuration> = {}) {
+        this.conferenceSearchDisplayMode = args.conferenceSearchDisplayMode;
         this.conferenceListDisplayMode = args.conferenceListDisplayMode;
     }
 

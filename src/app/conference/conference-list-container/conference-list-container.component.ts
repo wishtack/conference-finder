@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { ComponentLocation } from '../../../lib/dynamic-component-loader/dynamic-component-loader';
 import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
 import { Conference } from '../conference';
@@ -15,7 +15,9 @@ import { ConferenceRepository } from '../conference-repository';
 })
 export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
-    componentLocation$: Observable<ComponentLocation>;
+    conferenceListComponentLocation$: Observable<ComponentLocation>;
+    conferenceSearchComponentLocation$: Observable<ComponentLocation>;
+
     conferenceFilter: ConferenceFilter;
     conferenceList: Conference[];
 
@@ -39,21 +41,38 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
             selector: 'wt-conference-list-v2'
         }
     };
+    private _conferenceSearchComponentLocationDict = {
+        form: {
+            moduleId: 'conference-search-form',
+            selector: 'wt-conference-search-form'
+        },
+        links: {
+            moduleId: 'conference-search-links',
+            selector: 'wt-conference-search-links'
+        }
+    };
 
     constructor(
         private _conferenceRepository: ConferenceRepository,
         private _currentConfigurationService: CurrentConfigurationService
     ) {
 
-        this.componentLocation$ = this._currentConfigurationService.watchCurrentConfiguration()
-            .pipe(
-                map(configuration => {
+        const configuration$ = this._currentConfigurationService.watchCurrentConfiguration()
+            .pipe(shareReplay(1));
 
-                    return this._conferenceListComponentLocationDict[configuration.conferenceListDisplayMode]
-                        || this._conferenceListComponentLocationDict.v1;
+        this.conferenceListComponentLocation$ = configuration$.pipe(
+            map(configuration => {
+                return this._conferenceListComponentLocationDict[configuration.conferenceListDisplayMode]
+                    || this._conferenceListComponentLocationDict.v1;
+            })
+        );
 
-                })
-            );
+        this.conferenceSearchComponentLocation$ = configuration$.pipe(
+            map(configuration => {
+                return this._conferenceSearchComponentLocationDict[configuration.conferenceSearchDisplayMode]
+                    || this._conferenceSearchComponentLocationDict.form;
+            })
+        );
 
     }
 

@@ -1,6 +1,17 @@
 <form [formGroup]="configurationForm">
 
     <div>
+        <label>Conference search display mode</label>
+        <mat-radio-group
+            formControlName="conferenceSearchDisplayMode"
+            fxLayout="row"
+            fxLayoutAlign="space-around">
+            <mat-radio-button value="form">Form</mat-radio-button>
+            <mat-radio-button value="links">Links</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div>
         <label>Conference list display mode</label>
         <mat-radio-group
             formControlName="conferenceListDisplayMode"

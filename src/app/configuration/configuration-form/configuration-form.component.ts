@@ -15,7 +15,8 @@ export class ConfigurationFormComponent implements OnChanges {
     @Output() configurationChange: Observable<Configuration>;
 
     configurationForm = new FormGroup({
-        conferenceListDisplayMode: new FormControl()
+        conferenceListDisplayMode: new FormControl(),
+        conferenceSearchDisplayMode: new FormControl()
     });
 
     constructor() {
