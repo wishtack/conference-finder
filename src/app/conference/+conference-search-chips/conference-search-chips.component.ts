@@ -4,11 +4,11 @@ import { ConferenceRepository } from '../conference-repository';
 import { ConferenceSearchComponent } from '../conference-search-component';
 
 @Component({
-    selector: 'wt-conference-search-links',
-    templateUrl: './conference-search-links.component.html',
-    styleUrls: ['./conference-search-links.component.scss']
+    selector: 'wt-conference-search-chips',
+    templateUrl: './conference-search-chips.component.html',
+    styleUrls: ['./conference-search-chips.component.scss']
 })
-export class ConferenceSearchLinksComponent implements ConferenceSearchComponent {
+export class ConferenceSearchChipsComponent implements ConferenceSearchComponent {
 
     @Input() conferenceFilter: ConferenceFilter;
     @Output() conferenceFilterChange = new EventEmitter<ConferenceFilter>();
@@ -25,6 +25,10 @@ export class ConferenceSearchLinksComponent implements ConferenceSearchComponent
             topicId
         }));
 
+    }
+
+    onSelectionChange($event) {
+        console.log($event);
     }
 
 }

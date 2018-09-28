@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ConferenceFilter } from '../conference-filter';
 import { ConferenceRepository } from '../conference-repository';
+import { ConferenceSearchComponent } from '../conference-search-component';
 
 @Component({
     selector: 'wt-conference-search-form',
     templateUrl: './conference-search-form.component.html',
     styleUrls: ['./conference-search-form.component.scss']
 })
-export class ConferenceSearchFormComponent implements OnChanges {
+export class ConferenceSearchFormComponent implements ConferenceSearchComponent, OnChanges {
 
     @Input() conferenceFilter: ConferenceFilter;
     @Output() conferenceFilterChange: Observable<ConferenceFilter>;

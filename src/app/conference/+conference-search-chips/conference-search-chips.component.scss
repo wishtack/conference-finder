@@ -1,0 +1,10 @@
+@import "../../../variables";
+
+:host {
+    display: block;
+    padding-top: 20px;
+}
+
+.wt-topic-chip {
+    cursor: pointer;
+}

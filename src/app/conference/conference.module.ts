@@ -20,14 +20,6 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
     imports: [
         CommonModule,
         DynamicComponentLoaderModule.declareModule({
-            moduleId: 'conference-search-form',
-            modulePath: './+conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
-        }),
-        DynamicComponentLoaderModule.declareModule({
-            moduleId: 'conference-search-links',
-            modulePath: './+conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
-        }),
-        DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-table',
             modulePath: './+conference-list-table/conference-list-table.module#ConferenceListTableModule'
         }),
@@ -38,6 +30,18 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-v2',
             modulePath: './+conference-list-v2/conference-list-v2.module#ConferenceListV2Module'
+        }),
+        DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-search-chips',
+            modulePath: './+conference-search-chips/conference-search-chips.module#ConferenceSearchChipsModule'
+        }),
+        DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-search-form',
+            modulePath: './+conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
+        }),
+        DynamicComponentLoaderModule.declareModule({
+            moduleId: 'conference-search-links',
+            modulePath: './+conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
         })
     ]
 })
