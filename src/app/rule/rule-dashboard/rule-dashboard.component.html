@@ -8,13 +8,13 @@
 </button>
 
 <div
-    class="wt-rule-card-list"
+    class="wt-rule-card__list"
     fxLayout="column"
     fxLayoutAlign="start center">
 
     <div
         *ngFor="let rule of ruleList; let isFirstRule=first; trackBy:ruleTracker"
-        class="wt-rule-card"
+        class="wt-rule-card__container"
         @enterLeave
         [draggable]="!isFirstRule"
         (dragstart)="onRuleDragStart(rule)"
@@ -25,6 +25,7 @@
         (drop)="onRuleDrop(rule, isFirstRule)">
 
         <mat-card
+            class="wt-rule-card"
             [@dragged]="rule === draggedRule"
             [@draggedOver]="rule === draggedOverRule && rule !== draggedRule"
             [style.pointer-events]="draggedOverRule ? 'none' : null">

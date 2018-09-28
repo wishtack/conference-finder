@@ -9,12 +9,16 @@
     right: 10px;
 }
 
-.wt-rule-card-list {
+.wt-rule-card__list {
     perspective: 1000px;
 }
 
-.wt-rule-card {
+.wt-rule-card__container {
     margin: 20px;
     max-width: 500px;
     width: 100%;
+}
+
+.wt-rule-card {
+    padding: 0;
 }

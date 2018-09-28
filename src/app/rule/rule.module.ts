@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
@@ -40,6 +41,7 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
         LayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatDividerModule,
         MatFormFieldModule,
         MatIconModule,
         MatMenuModule,

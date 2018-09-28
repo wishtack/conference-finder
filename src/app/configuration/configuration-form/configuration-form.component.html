@@ -1,7 +1,7 @@
 <form [formGroup]="configurationForm">
 
-    <div>
-        <label>Conference search display mode</label>
+    <div class="wt-configuration__block">
+        <h3>Conference search display mode</h3>
         <mat-radio-group
             formControlName="conferenceSearchDisplayMode"
             fxLayout="row"
@@ -11,8 +11,10 @@
         </mat-radio-group>
     </div>
 
-    <div>
-        <label>Conference list display mode</label>
+    <mat-divider></mat-divider>
+
+    <div class="wt-configuration__block">
+        <h3>Conference list display mode</h3>
         <mat-radio-group
             formControlName="conferenceListDisplayMode"
             fxLayout="row"
