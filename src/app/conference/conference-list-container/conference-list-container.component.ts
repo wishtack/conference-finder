@@ -27,31 +27,6 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     private _scavenger = new Scavenger(this);
 
-    private _conferenceListComponentLocationDict = {
-        table: {
-            moduleId: 'conference-list-table',
-            selector: 'wt-conference-list-table'
-        },
-        v1: {
-            moduleId: 'conference-list-v1',
-            selector: 'wt-conference-list-v1'
-        },
-        v2: {
-            moduleId: 'conference-list-v2',
-            selector: 'wt-conference-list-v2'
-        }
-    };
-    private _conferenceSearchComponentLocationDict = {
-        form: {
-            moduleId: 'conference-search-form',
-            selector: 'wt-conference-search-form'
-        },
-        links: {
-            moduleId: 'conference-search-links',
-            selector: 'wt-conference-search-links'
-        }
-    };
-
     constructor(
         private _conferenceRepository: ConferenceRepository,
         private _currentConfigurationService: CurrentConfigurationService
@@ -61,17 +36,17 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
             .pipe(shareReplay(1));
 
         this.conferenceListComponentLocation$ = configuration$.pipe(
-            map(configuration => {
-                return this._conferenceListComponentLocationDict[configuration.conferenceListDisplayMode]
-                    || this._conferenceListComponentLocationDict.v1;
-            })
+            map(({conferenceListDisplayMode}) => ({
+                moduleId: `conference-list-${conferenceListDisplayMode}`,
+                selector: `wt-conference-list-${conferenceListDisplayMode}`
+            }))
         );
 
         this.conferenceSearchComponentLocation$ = configuration$.pipe(
-            map(configuration => {
-                return this._conferenceSearchComponentLocationDict[configuration.conferenceSearchDisplayMode]
-                    || this._conferenceSearchComponentLocationDict.form;
-            })
+            map(({conferenceSearchDisplayMode}) => ({
+                moduleId: `conference-search-${conferenceSearchDisplayMode}`,
+                selector: `wt-conference-search-${conferenceSearchDisplayMode}`
+            }))
         );
 
     }

@@ -21,23 +21,23 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         CommonModule,
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-search-form',
-            modulePath: './conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
+            modulePath: './+conference-search-form/conference-search-form.module#ConferenceSearchFormModule'
         }),
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-search-links',
-            modulePath: './conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
+            modulePath: './+conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
         }),
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-table',
-            modulePath: './conference-list-table/conference-list-table.module#ConferenceListTableModule'
+            modulePath: './+conference-list-table/conference-list-table.module#ConferenceListTableModule'
         }),
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-v1',
-            modulePath: './conference-list-v1/conference-list-v1.module#ConferenceListV1Module'
+            modulePath: './+conference-list-v1/conference-list-v1.module#ConferenceListV1Module'
         }),
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-list-v2',
-            modulePath: './conference-list-v2/conference-list-v2.module#ConferenceListV2Module'
+            modulePath: './+conference-list-v2/conference-list-v2.module#ConferenceListV2Module'
         })
     ]
 })
