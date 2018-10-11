@@ -1,18 +1,19 @@
 @import '~@angular/material/theming';
-@import './variables';
+@import 'variables';
 
 @include mat-core();
 
-@include angular-material-theme($dark-theme);
+@include angular-material-theme($theme);
 
 html, body {
     height: 100%;
 }
 
 body {
-    background-color: #36474f;
-    color: white;
+    background-color: $background-color;
+    color: $text-color;
     font-family: 'Roboto', sans-serif;
+    font-size: $font-size;
     margin: 0;
     text-align: center;
 }

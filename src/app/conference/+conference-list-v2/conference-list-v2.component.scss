@@ -1,7 +1,9 @@
+@import "variables";
+
 :host {
     text-align: left;
 }
 
 .wt-conference__link {
-    color: white;
+    color: $text-color;
 }

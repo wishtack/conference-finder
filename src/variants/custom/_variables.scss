@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+$primary-palette: mat-palette($mat-indigo);
+$accent-palette: mat-palette($mat-pink, A200, A100, A400);
+$warn-palette: mat-palette($mat-deep-orange);
+$theme: mat-dark-theme($primary-palette, $accent-palette, $warn-palette);
+
+/* Export theme colors. */
+$primary-color: mat-color($primary-palette);
+$accent-color: mat-color($accent-palette);
+$warn-color: mat-color($warn-palette);
+
+$background-color: #36474f;
+$font-size: 1.1em;
+$text-color: white;

@@ -29,9 +29,21 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/variants/default"
+              ]
+            }
           },
           "configurations": {
+            "custom": {
+              "stylePreprocessorOptions": {
+                "includePaths": [
+                  "src/variants/custom"
+                ]
+              }
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -57,6 +69,9 @@
             "browserTarget": "conference-finder:build"
           },
           "configurations": {
+            "custom": {
+              "browserTarget": "conference-finder:build:custom"
+            },
             "production": {
               "browserTarget": "conference-finder:build:production"
             }

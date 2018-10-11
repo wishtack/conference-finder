@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import "variables";
 
 :host {
     display: block;
@@ -7,4 +7,5 @@
 
 .wt-topic-chip {
     cursor: pointer;
+    font-size: $font-size;
 }
