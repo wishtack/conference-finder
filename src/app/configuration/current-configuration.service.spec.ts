@@ -7,6 +7,8 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { ConferenceListDisplayMode } from '../conference/conference-list-display-mode';
+import { ConferenceSearchDisplayMode } from '../conference/conference-search-display-mode';
 import { ConditionAudiencePercentage } from '../rule/condition-audience-percentage-form/condition-audience-percentage';
 import { Rule } from '../rule/rule';
 import { RuleRepository } from '../rule/rule-repository';
@@ -40,8 +42,8 @@ describe('CurrentConfigurationService', () => {
                 id: 'ID_1',
                 position: 1,
                 configuration: new Configuration({
-                    conferenceSearchDisplayMode: 'form',
-                    conferenceListDisplayMode: 'v1'
+                    conferenceSearchDisplayMode: ConferenceSearchDisplayMode.Form,
+                    conferenceListDisplayMode: ConferenceListDisplayMode.V1
                 })
             }),
             new Rule({
@@ -51,8 +53,8 @@ describe('CurrentConfigurationService', () => {
                     audiencePercentage: 0
                 }),
                 configuration: new Configuration({
-                    conferenceSearchDisplayMode: 'chips',
-                    conferenceListDisplayMode: 'v2'
+                    conferenceSearchDisplayMode: ConferenceSearchDisplayMode.Chips,
+                    conferenceListDisplayMode: ConferenceListDisplayMode.V2
                 })
             }),
             new Rule({
@@ -63,7 +65,7 @@ describe('CurrentConfigurationService', () => {
                 }),
                 configuration: new Configuration({
                     conferenceSearchDisplayMode: null,
-                    conferenceListDisplayMode: 'v2'
+                    conferenceListDisplayMode: ConferenceListDisplayMode.V2
                 })
             })
         ]));
@@ -72,8 +74,8 @@ describe('CurrentConfigurationService', () => {
         currentConfigurationService.watchCurrentConfiguration().subscribe(_configuration => configuration = _configuration);
 
         expect(configuration).toEqual(new Configuration({
-            conferenceSearchDisplayMode: 'form',
-            conferenceListDisplayMode: 'v2'
+            conferenceSearchDisplayMode: ConferenceSearchDisplayMode.Form,
+            conferenceListDisplayMode: ConferenceListDisplayMode.V2
         }));
 
     });

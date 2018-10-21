@@ -2,6 +2,8 @@ import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/cor
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ConferenceListDisplayMode } from '../../conference/conference-list-display-mode';
+import { ConferenceSearchDisplayMode } from '../../conference/conference-search-display-mode';
 import { Configuration } from '../configuration';
 
 @Component({
@@ -14,6 +16,9 @@ export class ConfigurationFormComponent implements OnChanges {
     @Input() configuration: Configuration;
     @Input() shouldShowInheritOption: boolean;
     @Output() configurationChange: Observable<Configuration>;
+
+    ConferenceListDisplayMode = ConferenceListDisplayMode;
+    ConferenceSearchDisplayMode = ConferenceSearchDisplayMode;
 
     configurationForm = new FormGroup({
         conferenceListDisplayMode: new FormControl(),

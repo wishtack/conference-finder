@@ -1,37 +1,49 @@
 <form [formGroup]="configurationForm">
 
     <div class="wt-configuration__block">
+
         <h3>Conference search display mode</h3>
+
         <mat-radio-group
             formControlName="conferenceSearchDisplayMode"
             fxLayout="row"
             fxLayoutAlign="space-around">
+
             <mat-radio-button
                 *ngIf="shouldShowInheritOption"
                 [value]="null">Inherit
             </mat-radio-button>
-            <mat-radio-button value="form">Form</mat-radio-button>
-            <mat-radio-button value="chips">Chips</mat-radio-button>
-            <mat-radio-button value="links">Links</mat-radio-button>
+
+            <mat-radio-button [value]="ConferenceSearchDisplayMode.Chips">Chips</mat-radio-button>
+            <mat-radio-button [value]="ConferenceSearchDisplayMode.Links">Links</mat-radio-button>
+            <mat-radio-button [value]="ConferenceSearchDisplayMode.Form">Form</mat-radio-button>
+
         </mat-radio-group>
+
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="wt-configuration__block">
+
         <h3>Conference list display mode</h3>
+
         <mat-radio-group
             formControlName="conferenceListDisplayMode"
             fxLayout="row"
             fxLayoutAlign="space-around">
+
             <mat-radio-button
                 *ngIf="shouldShowInheritOption"
                 [value]="null">Inherit
             </mat-radio-button>
-            <mat-radio-button value="v1">List V1</mat-radio-button>
-            <mat-radio-button value="v2">List V2</mat-radio-button>
-            <mat-radio-button value="table">Table</mat-radio-button>
+
+            <mat-radio-button [value]="ConferenceListDisplayMode.V1">List V1</mat-radio-button>
+            <mat-radio-button [value]="ConferenceListDisplayMode.V2">List V2</mat-radio-button>
+            <mat-radio-button [value]="ConferenceListDisplayMode.Table">Table</mat-radio-button>
+
         </mat-radio-group>
+
     </div>
 
 </form>
