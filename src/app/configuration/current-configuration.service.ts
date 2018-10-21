@@ -39,9 +39,9 @@ export class CurrentConfigurationService {
                         .reduce((mergedConfiguration, configuration) => {
 
                             /* Remove undefined values.
-                             * e.g.: {a: 1, b: undefined, c: null} => {a: 1, c: null}. */
+                             * e.g.: {a: 1, b: undefined, c: null, d: 2} => {a: 1, d: 2}. */
                             const configurationData = Object.assign({}, ...Object.entries(configuration)
-                                .filter(([key, value]) => value !== undefined)
+                                .filter(([key, value]) => value != null)
                                 .map(([key, value]) => ({[key]: value})));
 
                             return new Configuration({

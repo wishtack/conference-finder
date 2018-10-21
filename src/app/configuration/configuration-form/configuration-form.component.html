@@ -6,6 +6,10 @@
             formControlName="conferenceSearchDisplayMode"
             fxLayout="row"
             fxLayoutAlign="space-around">
+            <mat-radio-button
+                *ngIf="shouldShowInheritOption"
+                [value]="null">Inherit
+            </mat-radio-button>
             <mat-radio-button value="form">Form</mat-radio-button>
             <mat-radio-button value="chips">Chips</mat-radio-button>
             <mat-radio-button value="links">Links</mat-radio-button>
@@ -20,6 +24,10 @@
             formControlName="conferenceListDisplayMode"
             fxLayout="row"
             fxLayoutAlign="space-around">
+            <mat-radio-button
+                *ngIf="shouldShowInheritOption"
+                [value]="null">Inherit
+            </mat-radio-button>
             <mat-radio-button value="v1">List V1</mat-radio-button>
             <mat-radio-button value="v2">List V2</mat-radio-button>
             <mat-radio-button value="table">Table</mat-radio-button>

@@ -63,6 +63,7 @@
 
                 <wt-rule-form
                     [rule]="rule"
+                    [shouldShowInheritOption]="!isFirstRule"
                     [shouldShowConditions]="!isFirstRule"
                     (ruleChange)="onRuleChange(rule.id, $event)"></wt-rule-form>
 

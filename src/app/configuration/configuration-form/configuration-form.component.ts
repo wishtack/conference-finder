@@ -12,6 +12,7 @@ import { Configuration } from '../configuration';
 export class ConfigurationFormComponent implements OnChanges {
 
     @Input() configuration: Configuration;
+    @Input() shouldShowInheritOption: boolean;
     @Output() configurationChange: Observable<Configuration>;
 
     configurationForm = new FormGroup({

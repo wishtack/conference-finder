@@ -12,6 +12,7 @@ export class RuleFormComponent {
 
     @Input() rule: Rule;
     @Input() shouldShowConditions = true;
+    @Input() shouldShowInheritOption = true;
     @Output() ruleChange = new EventEmitter<Rule>();
 
     onConditionChange(condition: Condition) {
