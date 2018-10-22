@@ -7,7 +7,7 @@
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDividerModule, MatRadioModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule, MatRadioModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { ConfigurationFormComponent } from './configuration-form/configuration-form.component';
 
@@ -19,6 +19,7 @@ import { ConfigurationFormComponent } from './configuration-form/configuration-f
         ConfigurationFormComponent
     ],
     imports: [
+        MatButtonModule,
         MatDividerModule,
         MatRadioModule,
         ReactiveFormsModule,

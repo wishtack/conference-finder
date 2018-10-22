@@ -70,6 +70,23 @@
 
         </mat-radio-group>
 
+        <div fxLayout="column" fxLayoutAlign="center center">
+
+            <label for="color">Background Color</label>
+
+            <input
+                formControlName="backgroundColor"
+                id="color"
+                type="color">
+
+            <button
+                (click)="configurationForm.get('backgroundColor').reset()"
+                mat-button
+                type="button">Reset
+            </button>
+
+        </div>
+
     </div>
 
 </form>

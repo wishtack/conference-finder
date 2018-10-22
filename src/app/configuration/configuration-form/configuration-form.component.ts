@@ -23,6 +23,7 @@ export class ConfigurationFormComponent implements OnChanges {
     Theme = Theme;
 
     configurationForm = new FormGroup({
+        backgroundColor: new FormControl(),
         conferenceListDisplayMode: new FormControl(),
         conferenceSearchDisplayMode: new FormControl(),
         theme: new FormControl()

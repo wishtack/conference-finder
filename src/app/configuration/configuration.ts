@@ -10,11 +10,13 @@ import { Theme } from '../conference/theme';
 
 export class Configuration {
 
+    backgroundColor: string;
     conferenceListDisplayMode: ConferenceListDisplayMode;
     conferenceSearchDisplayMode: ConferenceSearchDisplayMode;
     theme: Theme;
 
     constructor(args: Partial<Configuration> = {}) {
+        this.backgroundColor = args.backgroundColor;
         this.conferenceSearchDisplayMode = args.conferenceSearchDisplayMode;
         this.conferenceListDisplayMode = args.conferenceListDisplayMode;
         this.theme = args.theme;
