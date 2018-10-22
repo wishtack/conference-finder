@@ -11,6 +11,7 @@ import { DynamicComponentLoaderModule } from '../lib/dynamic-component-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LogoModule } from './logo/logo.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
         BrowserAnimationsModule,
         DynamicComponentLoaderModule.forRoot(),
         HttpClientModule,
+        LogoModule,
         SharedModule
     ],
     providers: [
