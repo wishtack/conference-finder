@@ -7,8 +7,8 @@
 
 import { async, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { ConferenceListDisplayMode } from '../conference/conference-list-display-mode';
-import { ConferenceSearchDisplayMode } from '../conference/conference-search-display-mode';
+import { ConferenceListDisplayMode } from '../conference/conference-list-display-mode.enum';
+import { ConferenceSearchDisplayMode } from '../conference/conference-search-display-mode.enum';
 import { ConditionAudiencePercentage } from '../rule-condition/condition-audience-percentage-form/condition-audience-percentage';
 import { Rule } from '../rule/rule';
 import { RuleRepository } from '../rule/rule-repository';

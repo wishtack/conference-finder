@@ -8,6 +8,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DynamicComponentLoaderModule } from '../../lib/dynamic-component-loader';
+import { LogoModule } from '../logo/logo.module';
 import { ConferenceListContainerComponent } from './conference-list-container/conference-list-container.component';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         DynamicComponentLoaderModule.declareModule({
             moduleId: 'conference-search-links',
             modulePath: './+conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
-        })
+        }),
+        LogoModule
     ]
 })
 export class ConferenceModule {

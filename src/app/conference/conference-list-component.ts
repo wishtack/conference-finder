@@ -4,6 +4,7 @@
  *
  * $Id: $
  */
+
 import { Conference } from './conference';
 
 export interface ConferenceListComponent {

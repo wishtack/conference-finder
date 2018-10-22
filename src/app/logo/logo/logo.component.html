@@ -1,5 +1,12 @@
-<img
-    *ngIf="logoPictureUrl"
-    [src]="logoPictureUrl"
-    alt="logo"
-    class="wt-logo">
+<div
+    *ngIf="logoPictureUrl$ | async as logoPictureUrl"
+    class="wt-logo__container"
+    fxLayout="column"
+    fxLayoutAlign="center center">
+
+    <img
+        [src]="logoPictureUrl"
+        alt="logo"
+        class="wt-logo">
+
+</div>

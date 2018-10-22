@@ -4,21 +4,24 @@
  *
  * $Id: $
  */
-import { ConferenceListDisplayMode } from '../conference/conference-list-display-mode';
-import { ConferenceSearchDisplayMode } from '../conference/conference-search-display-mode';
-import { Theme } from '../conference/theme';
+import { ConferenceListDisplayMode } from '../conference/conference-list-display-mode.enum';
+import { ConferenceSearchDisplayMode } from '../conference/conference-search-display-mode.enum';
+import { Theme } from '../conference/theme.enum';
+import { Logo } from '../logo/logo.enum';
 
 export class Configuration {
 
     backgroundColor: string;
     conferenceListDisplayMode: ConferenceListDisplayMode;
     conferenceSearchDisplayMode: ConferenceSearchDisplayMode;
+    logo: Logo;
     theme: Theme;
 
     constructor(args: Partial<Configuration> = {}) {
         this.backgroundColor = args.backgroundColor;
         this.conferenceSearchDisplayMode = args.conferenceSearchDisplayMode;
         this.conferenceListDisplayMode = args.conferenceListDisplayMode;
+        this.logo = args.logo;
         this.theme = args.theme;
     }
 

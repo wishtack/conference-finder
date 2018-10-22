@@ -70,13 +70,43 @@
 
         </mat-radio-group>
 
-        <div fxLayout="column" fxLayoutAlign="center center">
+        <!-- Logo. -->
+        <div
+            fxLayout="column">
 
-            <label for="color">Background Color</label>
+            <h4>Logo</h4>
+
+            <mat-radio-group
+                formControlName="logo"
+                fxLayout="row"
+                fxLayoutAlign="space-around">
+
+                <mat-radio-button
+                    *ngIf="shouldShowInheritOption"
+                    [value]="null">Inherit
+                </mat-radio-button>
+
+                <mat-radio-button
+                    *ngIf="!shouldShowInheritOption"
+                    [value]="null">None
+                </mat-radio-button>
+
+                <mat-radio-button [value]="Logo.AngularConnect">AngularConnect</mat-radio-button>
+                <mat-radio-button [value]="Logo.Wishtack">Wishtack</mat-radio-button>
+
+            </mat-radio-group>
+
+        </div>
+
+        <!-- Background color. -->
+        <div
+            fxLayout="column"
+            fxLayoutAlign="center center">
+
+            <h4>Background Color</h4>
 
             <input
                 formControlName="backgroundColor"
-                id="color"
                 type="color">
 
             <button

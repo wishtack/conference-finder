@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/cor
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ConferenceListDisplayMode } from '../../conference/conference-list-display-mode';
-import { ConferenceSearchDisplayMode } from '../../conference/conference-search-display-mode';
-import { Theme } from '../../conference/theme';
+import { ConferenceListDisplayMode } from '../../conference/conference-list-display-mode.enum';
+import { ConferenceSearchDisplayMode } from '../../conference/conference-search-display-mode.enum';
+import { Theme } from '../../conference/theme.enum';
+import { Logo } from '../../logo/logo.enum';
 import { Configuration } from '../configuration';
 
 @Component({
@@ -20,12 +21,14 @@ export class ConfigurationFormComponent implements OnChanges {
 
     ConferenceListDisplayMode = ConferenceListDisplayMode;
     ConferenceSearchDisplayMode = ConferenceSearchDisplayMode;
+    Logo = Logo;
     Theme = Theme;
 
     configurationForm = new FormGroup({
         backgroundColor: new FormControl(),
         conferenceListDisplayMode: new FormControl(),
         conferenceSearchDisplayMode: new FormControl(),
+        logo: new FormControl(),
         theme: new FormControl()
     });
 
