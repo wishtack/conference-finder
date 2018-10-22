@@ -36,7 +36,7 @@ export class ConditionDeviceFormComponent implements ConditionFormComponent, OnC
     ngOnChanges(changes: SimpleChanges) {
 
         if (changes.condition != null) {
-            this.deviceTypeControl.setValue(this.condition.deviceType, {
+            this.deviceTypeControl.setValue(this.condition.deviceType || null, {
                 emitEvent: false
             });
         }
