@@ -21,6 +21,6 @@
     <ng-container
         *ngIf="conditionFormComponentClass"
         [ngComponentOutlet]="conditionFormComponentClass"
-        [ndcDynamicInputs]="inputs"
-        [ndcDynamicOutputs]="outputs"></ng-container>
+        [ndcDynamicInputs]="{condition: condition}"
+        [ndcDynamicOutputs]="{conditionChange: onConditionChange}"></ng-container>
 </div>

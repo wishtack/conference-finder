@@ -9,6 +9,7 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
+    MatRadioModule,
     MatSelectModule,
     MatSliderModule
 } from '@angular/material';
@@ -16,6 +17,7 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { SharedModule } from '../shared/shared.module';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
+import { ConditionDeviceFormComponent } from './condition-device-form/condition-device-form.component';
 import { ConditionFormContainerComponent } from './condition-form-container/condition-form-container.component';
 import { RuleDashboardComponent } from './rule-dashboard/rule-dashboard.component';
 import { RuleFormComponent } from './rule-form/rule-form.component';
@@ -24,8 +26,9 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
     declarations: [
         RuleDashboardComponent,
         RuleFormComponent,
-        ConditionFormContainerComponent,
-        ConditionAudiencePercentageFormComponent
+        ConditionAudiencePercentageFormComponent,
+        ConditionDeviceFormComponent,
+        ConditionFormContainerComponent
     ],
     exports: [
         RuleDashboardComponent,
@@ -36,7 +39,8 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
         CommonModule,
         ConfigurationModule,
         DynamicModule.withComponents([
-            ConditionAudiencePercentageFormComponent
+            ConditionAudiencePercentageFormComponent,
+            ConditionDeviceFormComponent
         ]),
         LayoutModule,
         MatButtonModule,
@@ -45,6 +49,7 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
         MatFormFieldModule,
         MatIconModule,
         MatMenuModule,
+        MatRadioModule,
         MatSelectModule,
         MatSliderModule,
         ReactiveFormsModule,

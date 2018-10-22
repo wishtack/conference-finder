@@ -19,13 +19,7 @@ export class ConditionFormContainerComponent implements OnChanges, OnInit {
     conditionFormComponentClass: Type<ConditionFormComponent>;
     conditionTypeControl = new FormControl();
     conditionTypeInfoList: ConditionTypeInfo[];
-
-    inputs = {
-        condition: null
-    };
-    outputs = {
-        conditionChange: condition => this.conditionChange.emit(condition)
-    };
+    onConditionChange = (condition: Condition) => this.conditionChange.emit(condition);
 
     constructor(
         private _conditionFactory: ConditionFactory,
@@ -36,6 +30,7 @@ export class ConditionFormContainerComponent implements OnChanges, OnInit {
 
     ngOnInit() {
 
+        /* Create a new condition object when the user selects a new condition type and propagate to parent. */
         this.conditionTypeControl.valueChanges
             .subscribe(conditionType => {
 
@@ -51,23 +46,21 @@ export class ConditionFormContainerComponent implements OnChanges, OnInit {
 
     ngOnChanges(changes: SimpleChanges) {
 
+        /* When the condition type changes... */
         if (changes.condition != null) {
 
             const conditionType = this.condition ? this.condition.type : null;
 
+            /* ... reset the condition type control when the condition type changes...*/
             this.conditionTypeControl.setValue(conditionType, {
                 emitEvent: false
             });
 
+            /* ... and select the right component. */
             this.conditionFormComponentClass = this._conditionRegistry.getConditionFormComponentClass(conditionType);
-
-            this.inputs = {
-                condition: this.condition
-            };
 
         }
 
     }
-
 
 }

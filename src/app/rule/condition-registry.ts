@@ -9,6 +9,9 @@ import { Injectable } from '@angular/core';
 import { ConditionAudiencePercentage } from './condition-audience-percentage-form/condition-audience-percentage';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
 import { ConditionAudiencePercentageVerifier } from './condition-audience-percentage-form/condition-audience-percentage-verifier';
+import { ConditionDevice } from './condition-device-form/condition-device';
+import { ConditionDeviceFormComponent } from './condition-device-form/condition-device-form.component';
+import { ConditionDeviceVerifier } from './condition-device-form/condition-device-verifier';
 import { ConditionTypeInfo } from './condition-type-info';
 
 export function unknownConditionType(conditionType: string) {
@@ -20,18 +23,26 @@ export function unknownConditionType(conditionType: string) {
 })
 export class ConditionRegistry {
 
-    private _conditionTypeInfoList: ConditionTypeInfo[] = [
+    private readonly _conditionTypeInfoList: ConditionTypeInfo[] = [
         {
             conditionClass: ConditionAudiencePercentage,
             conditionFormComponentClass: ConditionAudiencePercentageFormComponent,
             conditionVerifier: this._conditionAudiencePercentageVerifier,
             label: 'Audience Percentage',
             type: ConditionAudiencePercentage.type
+        },
+        {
+            conditionClass: ConditionDevice,
+            conditionFormComponentClass: ConditionDeviceFormComponent,
+            conditionVerifier: this._conditionDeviceVerifier,
+            label: 'Device',
+            type: ConditionDevice.type
         }
     ];
 
     constructor(
-        private _conditionAudiencePercentageVerifier: ConditionAudiencePercentageVerifier
+        private _conditionAudiencePercentageVerifier: ConditionAudiencePercentageVerifier,
+        private _conditionDeviceVerifier: ConditionDeviceVerifier
     ) {
     }
 

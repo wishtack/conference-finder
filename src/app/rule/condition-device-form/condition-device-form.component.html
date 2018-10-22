@@ -1,0 +1,12 @@
+<mat-radio-group
+    [formControl]="deviceTypeControl"
+    fxLayout="row"
+    fxLayoutAlign="space-around">
+
+    <mat-radio-button [value]="null">None</mat-radio-button>
+
+    <mat-radio-button
+        *ngFor="let deviceType of deviceTypeList"
+        [value]="deviceType">{{ deviceType | titlecase }}</mat-radio-button>
+
+</mat-radio-group>
