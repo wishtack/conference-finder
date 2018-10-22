@@ -12,6 +12,9 @@ import { ConditionAudiencePercentageVerifier } from './condition-audience-percen
 import { ConditionDevice } from './condition-device-form/condition-device';
 import { ConditionDeviceFormComponent } from './condition-device-form/condition-device-form.component';
 import { ConditionDeviceVerifier } from './condition-device-form/condition-device-verifier';
+import { ConditionDomain } from './condition-domain-form/condition-domain';
+import { ConditionDomainFormComponent } from './condition-domain-form/condition-domain-form.component';
+import { ConditionDomainVerifier } from './condition-domain-form/condition-domain-verifier';
 import { ConditionTypeInfo } from './condition-type-info';
 
 export function unknownConditionType(conditionType: string) {
@@ -37,12 +40,20 @@ export class ConditionRegistry {
             conditionVerifier: this._conditionDeviceVerifier,
             label: 'Device',
             type: ConditionDevice.type
+        },
+        {
+            conditionClass: ConditionDomain,
+            conditionFormComponentClass: ConditionDomainFormComponent,
+            conditionVerifier: this._conditionDomainVerifier,
+            label: 'Domain',
+            type: ConditionDomain.type
         }
     ];
 
     constructor(
         private _conditionAudiencePercentageVerifier: ConditionAudiencePercentageVerifier,
-        private _conditionDeviceVerifier: ConditionDeviceVerifier
+        private _conditionDeviceVerifier: ConditionDeviceVerifier,
+        private _conditionDomainVerifier: ConditionDomainVerifier
     ) {
     }
 

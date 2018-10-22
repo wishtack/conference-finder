@@ -6,17 +6,20 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { SharedModule } from '../shared/shared.module';
 import { ConditionAudiencePercentageFormComponent } from './condition-audience-percentage-form/condition-audience-percentage-form.component';
 import { ConditionDeviceFormComponent } from './condition-device-form/condition-device-form.component';
+import { ConditionDomainFormComponent } from './condition-domain-form/condition-domain-form.component';
 import { ConditionFormContainerComponent } from './condition-form-container/condition-form-container.component';
 
 @NgModule({
     declarations: [
         ConditionAudiencePercentageFormComponent,
         ConditionDeviceFormComponent,
+        ConditionDomainFormComponent,
         ConditionFormContainerComponent
     ],
     entryComponents: [
         ConditionAudiencePercentageFormComponent,
-        ConditionDeviceFormComponent
+        ConditionDeviceFormComponent,
+        ConditionDomainFormComponent
     ],
     exports: [
         ConditionFormContainerComponent

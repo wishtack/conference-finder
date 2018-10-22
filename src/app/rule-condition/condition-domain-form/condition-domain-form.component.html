@@ -1,0 +1,21 @@
+<div>
+
+    <mat-form-field>
+
+        <mat-select
+            [formControl]="domainControl"
+            placeholder="Domain">
+
+            <mat-option [value]="null">None</mat-option>
+
+            <mat-option
+                *ngFor="let domain of domainList"
+                [value]="domain">
+                {{ domain }}
+            </mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+</div>
