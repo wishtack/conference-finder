@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Configuration } from '../../configuration/configuration';
-import { Condition } from '../condition';
+import { Condition } from '../../rule-condition/condition';
 import { Rule } from '../rule';
 
 @Component({

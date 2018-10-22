@@ -5,7 +5,7 @@
  * $Id: $
  */
 import { Configuration } from '../configuration/configuration';
-import { Condition } from './condition';
+import { Condition } from '../rule-condition/condition';
 
 export class Rule {
 

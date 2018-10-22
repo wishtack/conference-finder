@@ -8,8 +8,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Condition } from '../rule/condition';
-import { ConditionRegistry } from '../rule/condition-registry';
+import { Condition } from '../rule-condition/condition';
+import { ConditionRegistry } from '../rule-condition/condition-registry';
 import { RuleRepository } from '../rule/rule-repository';
 import { Configuration } from './configuration';
 
