@@ -9,10 +9,10 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 import { Route, RouterModule } from '@angular/router';
 import { IsSignedInGuard } from '../../auth/is-signed-in.guard';
-import { RuleDashboardComponent } from '../../rule/rule-dashboard/rule-dashboard.component';
 import { RuleModule } from '../../rule/rule.module';
 import { SharedModule } from '../../shared/shared.module';
 import { adminRouteResolver } from './admin-route-resolver';
+import { RuleDashboardViewComponent } from './rule-dashboard-view/rule-dashboard-view.component';
 import { SigninViewComponent } from './signin-view/signin-view.component';
 
 export const adminRoutes: Route[] = [
@@ -25,7 +25,7 @@ export const adminRoutes: Route[] = [
         canActivate: [
             IsSignedInGuard
         ],
-        component: RuleDashboardComponent
+        component: RuleDashboardViewComponent
     },
     {
         path: '**',
@@ -41,7 +41,10 @@ export const adminRoutes: Route[] = [
         RouterModule.forChild(adminRoutes),
         SharedModule
     ],
-    declarations: [SigninViewComponent]
+    declarations: [
+        RuleDashboardViewComponent,
+        SigninViewComponent
+    ]
 })
 export class AdminViewsModule {
 }

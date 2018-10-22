@@ -1,0 +1,10 @@
+<wt-rule-dashboard *ngIf="isAdmin$ | async"></wt-rule-dashboard>
+
+<div
+    *ngIf="!(isAdmin$ | async)"
+    fxFill
+    fxLayout="column"
+    fxLayoutAlign="center">
+    <div>Sorry but only administrators are allowed to access the rules dashboard.</div>
+    <code>Cf. yarn set-admin-role</code>
+</div>

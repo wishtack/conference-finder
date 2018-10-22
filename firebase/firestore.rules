@@ -2,7 +2,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
       allow read;
-      allow write: if request.auth.token.email in ['yjaaidi@gmail.com'];
+      allow write: if request.auth.token.admin == true;
     }
   }
 }
