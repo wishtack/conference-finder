@@ -2,14 +2,14 @@
   "name": "conference-finder",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
+    "test": "ng test",
     "build": "ng build",
     "build:prod": "yarn build --prod",
     "deploy": "run-s build:prod _firebase:deploy",
-    "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
+    "lint": "ng lint",
+    "set-admin-role": "ts-node --project tools/tsconfig.json tools/set-admin-role.ts",
     "_firebase:deploy": "firebase deploy"
   },
   "private": true,
@@ -62,6 +62,7 @@
   },
   "workspaces": [
     ".",
-    "functions"
+    "functions",
+    "tools"
   ]
 }

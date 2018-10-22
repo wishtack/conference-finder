@@ -1,0 +1,11 @@
+{
+    "name": "tools",
+    "version": "0.0.0",
+    "dependencies": {
+        "firebase-admin": "~6.0.0"
+    },
+    "private": true,
+    "devDependencies": {
+        "optimist": "^0.6.1"
+    }
+}
