@@ -3,16 +3,28 @@
 
 @include mat-core();
 
-@include angular-material-theme($dark-theme);
+@include angular-material-theme($light-theme);
 
 html, body {
     height: 100%;
 }
 
 body {
-    background-color: #36474f;
-    color: white;
+    background-color: #e3eaf4;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     text-align: center;
+}
+
+.wt-dark-theme {
+
+    @include angular-material-theme($dark-theme);
+
+    background-color: #36474f;
+    color: white;
+
+    .wt-link {
+        color: white;
+    }
+
 }
