@@ -31,22 +31,19 @@ export class ConditionRegistry {
             conditionClass: ConditionAudiencePercentage,
             conditionFormComponentClass: ConditionAudiencePercentageFormComponent,
             conditionVerifier: this._conditionAudiencePercentageVerifier,
-            label: 'Audience Percentage',
-            type: ConditionAudiencePercentage.type
+            label: 'Audience Percentage'
         },
         {
             conditionClass: ConditionDevice,
             conditionFormComponentClass: ConditionDeviceFormComponent,
             conditionVerifier: this._conditionDeviceVerifier,
-            label: 'Device',
-            type: ConditionDevice.type
+            label: 'Device'
         },
         {
             conditionClass: ConditionDomain,
             conditionFormComponentClass: ConditionDomainFormComponent,
             conditionVerifier: this._conditionDomainVerifier,
-            label: 'Domain',
-            type: ConditionDomain.type
+            label: 'Domain'
         }
     ];
 
@@ -82,7 +79,7 @@ export class ConditionRegistry {
     private _getConditionTypeInfo(conditionType: string) {
 
         const conditionTypeInfo = this._conditionTypeInfoList
-            .find(_conditionTypeInfo => _conditionTypeInfo.type === conditionType);
+            .find(_conditionTypeInfo => _conditionTypeInfo.conditionClass.type === conditionType);
 
         if (conditionTypeInfo == null) {
             throw unknownConditionType(conditionType);

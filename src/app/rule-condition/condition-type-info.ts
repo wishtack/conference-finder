@@ -6,10 +6,15 @@ export interface ConditionVerifier {
     verify(condition: Condition): boolean;
 }
 
+export interface ConditionClass {
+    type: string;
+
+    new(...args): Condition;
+}
+
 export interface ConditionTypeInfo {
-    conditionClass: Type<Condition>;
+    conditionClass: ConditionClass;
     conditionFormComponentClass: Type<ConditionFormComponent>;
     conditionVerifier: ConditionVerifier;
     label: string;
-    type: string;
 }

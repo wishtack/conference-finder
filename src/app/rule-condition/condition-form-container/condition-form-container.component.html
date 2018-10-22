@@ -9,7 +9,7 @@
 
             <mat-option
                 *ngFor="let conditionTypeInfo of conditionTypeInfoList"
-                [value]="conditionTypeInfo.type">
+                [value]="conditionTypeInfo.conditionClass.type">
                 {{ conditionTypeInfo.label }}
             </mat-option>
 
