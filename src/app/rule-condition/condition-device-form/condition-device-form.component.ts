@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { ConditionDevice, DeviceType } from './condition-device';
     templateUrl: './condition-device-form.component.html',
     styleUrls: ['./condition-device-form.component.scss']
 })
-export class ConditionDeviceFormComponent implements ConditionFormComponent {
+export class ConditionDeviceFormComponent implements ConditionFormComponent, OnChanges {
 
     @Input() condition: ConditionDevice;
     @Output() conditionChange: Observable<ConditionDevice>;
@@ -30,6 +30,16 @@ export class ConditionDeviceFormComponent implements ConditionFormComponent {
                     });
                 })
             );
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.condition != null) {
+            this.deviceTypeControl.setValue(this.condition.deviceType, {
+                emitEvent: false
+            });
+        }
 
     }
 

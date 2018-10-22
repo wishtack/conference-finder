@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { ConditionDomain } from './condition-domain';
     templateUrl: './condition-domain-form.component.html',
     styleUrls: ['./condition-domain-form.component.scss']
 })
-export class ConditionDomainFormComponent implements ConditionFormComponent {
+export class ConditionDomainFormComponent implements ConditionFormComponent, OnChanges {
 
     @Input() condition: ConditionDomain;
     @Output() conditionChange: Observable<ConditionDomain>;
@@ -33,6 +33,16 @@ export class ConditionDomainFormComponent implements ConditionFormComponent {
                     });
                 })
             );
+
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.condition != null) {
+            this.domainControl.setValue(this.condition.domain, {
+                emitEvent: false
+            });
+        }
 
     }
 
