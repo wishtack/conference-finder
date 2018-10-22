@@ -7,5 +7,6 @@
 
 export enum Logo {
     AngularConnect = 'angular-connect',
+    None = 'none',
     Wishtack = 'wishtack'
 }

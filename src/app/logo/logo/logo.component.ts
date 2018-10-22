@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
+import { Logo } from '../logo.enum';
 
 @Component({
     selector: 'wt-logo',
@@ -22,7 +23,7 @@ export class LogoComponent implements OnInit {
 
                     const logo = configuration.logo;
 
-                    if (logo == null) {
+                    if (logo == null || logo === Logo.None) {
                         return null;
                     }
 
