@@ -2,7 +2,14 @@
     <li
         *ngFor="let conference of conferenceList"
         class="wt-conference">
-        <div>{{ conference.name }}</div>
+        <div>
+            <a
+                class="wt-link"
+                target="_blank"
+                [href]="conference.url">
+                {{ conference.name }}
+            </a>
+        </div>
         <div class="wt-conference__location">({{ conference.city }} | {{ conference.country }})</div>
         <div>{{ conference.startDate | date }} / {{ conference.endDate | date }}</div>
     </li>
