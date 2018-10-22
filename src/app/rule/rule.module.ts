@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDividerModule, MatExpansionModule, MatIconModule, MatMenuModule } from '@angular/material';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { RuleConditionModule } from '../rule-condition/rule-condition.module';
 import { SharedModule } from '../shared/shared.module';
@@ -22,6 +22,7 @@ import { RuleFormComponent } from './rule-form/rule-form.component';
         MatButtonModule,
         MatCardModule,
         MatDividerModule,
+        MatExpansionModule,
         MatIconModule,
         MatMenuModule,
         RuleConditionModule,

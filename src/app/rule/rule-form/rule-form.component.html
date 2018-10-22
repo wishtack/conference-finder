@@ -5,7 +5,24 @@
 
 <mat-divider></mat-divider>
 
-<wt-configuration-form
-    [configuration]="rule.configuration"
-    [shouldShowInheritOption]="shouldShowInheritOption"
-    (configurationChange)="onConfigurationChange($event)"></wt-configuration-form>
+<mat-expansion-panel>
+
+    <mat-expansion-panel-header>
+
+        <mat-panel-title>
+            Configuration
+        </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+
+        <wt-configuration-form
+            [configuration]="rule.configuration"
+            [shouldShowInheritOption]="shouldShowInheritOption"
+            (configurationChange)="onConfigurationChange($event)"></wt-configuration-form>
+
+    </ng-template>
+
+
+</mat-expansion-panel>
