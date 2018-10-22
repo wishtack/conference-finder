@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { ConditionFormComponent } from '../condition-form-component';
 import { ConditionDomain } from './condition-domain';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-condition-device-form',
     templateUrl: './condition-domain-form.component.html',
     styleUrls: ['./condition-domain-form.component.scss']

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, Type } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Condition } from '../condition';
 import { ConditionFactory } from '../condition-factory';
@@ -7,6 +7,7 @@ import { ConditionRegistry } from '../condition-registry';
 import { ConditionTypeInfo } from '../condition-type-info';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-condition-form-container',
     templateUrl: './condition-form-container.component.html',
     styleUrls: ['./condition-form-container.component.scss']

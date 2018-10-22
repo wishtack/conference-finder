@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Configuration } from '../../configuration/configuration';
 import { Condition } from '../../rule-condition/condition';
 import { Rule } from '../rule';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'wt-rule-form',
     templateUrl: './rule-form.component.html',
     styleUrls: ['./rule-form.component.scss']
