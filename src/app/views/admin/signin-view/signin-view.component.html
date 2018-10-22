@@ -4,10 +4,10 @@
     fxLayoutAlign="center center">
 
     <button
-        (click)="signIn()"
         *ngIf="isSignedInButtonDisplayed$ | async"
         color="accent"
-        mat-raised-button>SIGN IN
+        mat-raised-button
+        (click)="signIn()">SIGN IN
     </button>
 
     <mat-progress-spinner

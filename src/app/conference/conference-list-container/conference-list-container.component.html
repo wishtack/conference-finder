@@ -7,8 +7,8 @@
 
 <wt-dynamic
     *ngIf="conferenceList?.length > 0"
-    [location]="conferenceListComponentLocation$ | async"
-    [inputs]="{conferenceList: conferenceList}"></wt-dynamic>
+    [inputs]="{conferenceList: conferenceList}"
+    [location]="conferenceListComponentLocation$ | async"></wt-dynamic>
 
 <section
     *ngIf="conferenceList?.length === 0">

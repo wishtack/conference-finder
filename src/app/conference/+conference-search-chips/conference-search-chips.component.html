@@ -6,11 +6,11 @@
 
         <mat-chip
             *ngFor="let topic of topicList"
-            (click)="selectTopic(topic.id)"
             class="wt-topic-chip"
+            color="accent"
             [selectable]="topic.id !== conferenceFilter.topicId"
             [selected]="topic.id === conferenceFilter.topicId"
-            color="accent">{{ topic.label }}</mat-chip>
+            (click)="selectTopic(topic.id)">{{ topic.label }}</mat-chip>
 
     </div>
 

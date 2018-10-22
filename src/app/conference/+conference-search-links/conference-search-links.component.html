@@ -3,10 +3,10 @@
     fxLayoutAlign="space-around">
 
     <span
-        (click)="selectTopic(topic.id)"
         *ngFor="let topic of topicList"
+        class="wt-topic-link"
         [class.wt-topic-link--selected]="topic.id === conferenceFilter.topicId"
-        class="wt-topic-link">
+        (click)="selectTopic(topic.id)">
         {{ topic.label }}
     </span>
 
