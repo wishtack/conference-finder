@@ -1,5 +1,6 @@
 <form [formGroup]="configurationForm">
 
+    <!-- Conference search display mode. -->
     <div class="wt-configuration__block">
 
         <h3>Conference search display mode</h3>
@@ -24,6 +25,7 @@
 
     <mat-divider></mat-divider>
 
+    <!-- Conference list display mode. -->
     <div class="wt-configuration__block">
 
         <h3>Conference list display mode</h3>
@@ -41,6 +43,30 @@
             <mat-radio-button [value]="ConferenceListDisplayMode.V1">List V1</mat-radio-button>
             <mat-radio-button [value]="ConferenceListDisplayMode.V2">List V2</mat-radio-button>
             <mat-radio-button [value]="ConferenceListDisplayMode.Table">Table</mat-radio-button>
+
+        </mat-radio-group>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Theme. -->
+    <div class="wt-configuration__block">
+
+        <h3>Theme</h3>
+
+        <mat-radio-group
+            formControlName="theme"
+            fxLayout="row"
+            fxLayoutAlign="space-around">
+
+            <mat-radio-button
+                *ngIf="shouldShowInheritOption"
+                [value]="null">Inherit
+            </mat-radio-button>
+
+            <mat-radio-button [value]="Theme.Dark">Dark</mat-radio-button>
+            <mat-radio-button [value]="Theme.Light">Light</mat-radio-button>
 
         </mat-radio-group>
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ConferenceListDisplayMode } from '../../conference/conference-list-display-mode';
 import { ConferenceSearchDisplayMode } from '../../conference/conference-search-display-mode';
+import { Theme } from '../../conference/theme';
 import { Configuration } from '../configuration';
 
 @Component({
@@ -19,10 +20,12 @@ export class ConfigurationFormComponent implements OnChanges {
 
     ConferenceListDisplayMode = ConferenceListDisplayMode;
     ConferenceSearchDisplayMode = ConferenceSearchDisplayMode;
+    Theme = Theme;
 
     configurationForm = new FormGroup({
         conferenceListDisplayMode: new FormControl(),
-        conferenceSearchDisplayMode: new FormControl()
+        conferenceSearchDisplayMode: new FormControl(),
+        theme: new FormControl()
     });
 
     constructor() {
