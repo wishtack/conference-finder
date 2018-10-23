@@ -20,13 +20,12 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     conferenceFilter: ConferenceFilter;
     conferenceList: Conference[];
-    searchOutputs = {
-        conferenceFilterChange: (conferenceFilter: ConferenceFilter) => this.onConferenceFilterChange(conferenceFilter)
-    };
 
     notFoundPictureUri = require('./not-found.jpg');
 
     private _scavenger = new Scavenger(this);
+
+    onConferenceFilterChange = (conferenceFilter: ConferenceFilter) => this._retrieveConferenceList(conferenceFilter);
 
     constructor(
         private _conferenceRepository: ConferenceRepository,
@@ -63,10 +62,6 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
      * Empty ngOnDestroy is required by Scavenger.
      */
     ngOnDestroy() {
-    }
-
-    onConferenceFilterChange(conferenceFilter: ConferenceFilter) {
-        this._retrieveConferenceList(conferenceFilter);
     }
 
     private _retrieveConferenceList(conferenceFilter: ConferenceFilter) {

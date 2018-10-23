@@ -3,7 +3,7 @@
 <wt-dynamic
     [inputs]="{conferenceFilter: conferenceFilter}"
     [location]="conferenceSearchComponentLocation$ | async"
-    [outputs]="searchOutputs"></wt-dynamic>
+    [outputs]="{conferenceFilterChange: onConferenceFilterChange}"></wt-dynamic>
 
 <wt-dynamic
     *ngIf="conferenceList?.length > 0"
