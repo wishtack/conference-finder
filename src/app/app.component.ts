@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import { CurrentConfigurationService } from './configuration/current-configuration.service';
+import { ConfigurationResolver } from './configuration/configuration-resolver.service';
 
 @Component({
     selector: 'wt-app',
@@ -12,18 +12,18 @@ export class AppComponent implements OnInit {
     constructor(
         @Inject(DOCUMENT) private _document: Document,
         private _renderer: Renderer2,
-        private _currentConfigurationService: CurrentConfigurationService
+        private _configurationResolver: ConfigurationResolver
     ) {
     }
 
     ngOnInit() {
 
-        this._currentConfigurationService.watchConfigurationProperty('backgroundColor')
+        this._configurationResolver.watchConfigurationProperty('backgroundColor')
             .subscribe(backgroundColor => {
                 this._renderer.setStyle(this._document.body, 'backgroundColor', backgroundColor || null);
             });
 
-        this._currentConfigurationService.watchConfigurationProperty('theme')
+        this._configurationResolver.watchConfigurationProperty('theme')
             .subscribe(theme => {
 
                 /* Using `setAttribute` instead of `addClass` because we want to reset the current theme. */

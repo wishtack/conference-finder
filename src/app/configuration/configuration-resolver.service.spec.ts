@@ -13,10 +13,10 @@ import { ConditionAudiencePercentage } from '../rule-condition/condition-audienc
 import { Rule } from '../rule/rule';
 import { RuleRepository } from '../rule/rule-repository';
 import { Configuration } from './configuration';
-import { CurrentConfigurationService } from './current-configuration.service';
+import { ConfigurationResolver } from './configuration-resolver.service';
 import Spy = jasmine.Spy;
 
-describe('CurrentConfigurationService', () => {
+describe('ConfigurationResolver', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -29,7 +29,7 @@ describe('CurrentConfigurationService', () => {
         }).compileComponents();
     }));
 
-    let currentConfigurationService: CurrentConfigurationService;
+    let configurationResolver: ConfigurationResolver;
 
     let ruleRepository: RuleRepository;
     beforeEach(() => ruleRepository = TestBed.get(RuleRepository));
@@ -69,10 +69,10 @@ describe('CurrentConfigurationService', () => {
             })
         ]));
 
-        currentConfigurationService = TestBed.get(CurrentConfigurationService);
+        configurationResolver = TestBed.get(ConfigurationResolver);
 
         let configuration: Configuration;
-        currentConfigurationService.currentConfiguration$.subscribe(_configuration => configuration = _configuration);
+        configurationResolver.currentConfiguration$.subscribe(_configuration => configuration = _configuration);
 
         expect(configuration).toEqual(new Configuration({
             conferenceSearchDisplayMode: ConferenceSearchDisplayMode.Form,

@@ -16,7 +16,7 @@ import { Configuration } from './configuration';
 @Injectable({
     providedIn: 'root'
 })
-export class CurrentConfigurationService {
+export class ConfigurationResolver {
 
     currentConfiguration$: Observable<Configuration>;
 

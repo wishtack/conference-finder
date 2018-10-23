@@ -3,7 +3,7 @@ import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ComponentLocation } from '../../../lib/dynamic-component-loader/dynamic-component-loader';
-import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
+import { ConfigurationResolver } from '../../configuration/configuration-resolver.service';
 import { Conference } from '../conference';
 import { ConferenceFilter } from '../conference-filter';
 import { ConferenceRepository } from '../conference-repository';
@@ -30,10 +30,10 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
 
     constructor(
         private _conferenceRepository: ConferenceRepository,
-        private _currentConfigurationService: CurrentConfigurationService
+        private _configurationResolver: ConfigurationResolver
     ) {
 
-        this.conferenceListComponentLocation$ = this._currentConfigurationService
+        this.conferenceListComponentLocation$ = this._configurationResolver
             .watchConfigurationProperty('conferenceListDisplayMode')
             .pipe(
                 map((conferenceListDisplayMode) => ({
@@ -42,7 +42,7 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
                 }))
             );
 
-        this.conferenceSearchComponentLocation$ = this._currentConfigurationService
+        this.conferenceSearchComponentLocation$ = this._configurationResolver
             .watchConfigurationProperty('conferenceSearchDisplayMode')
             .pipe(
                 map((conferenceSearchDisplayMode) => ({

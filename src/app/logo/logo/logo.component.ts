@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
+import { ConfigurationResolver } from '../../configuration/configuration-resolver.service';
 import { Logo } from '../logo.enum';
 
 @Component({
@@ -13,11 +13,11 @@ export class LogoComponent implements OnInit {
 
     logoPictureUrl$: Observable<string>;
 
-    constructor(private _currentConfigurationService: CurrentConfigurationService) {
+    constructor(private _configurationResolver: ConfigurationResolver) {
     }
 
     ngOnInit() {
-        this.logoPictureUrl$ = this._currentConfigurationService.currentConfiguration$
+        this.logoPictureUrl$ = this._configurationResolver.currentConfiguration$
             .pipe(
                 map(configuration => {
 
