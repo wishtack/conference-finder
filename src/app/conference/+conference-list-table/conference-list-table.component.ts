@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatSort, MatTableDataSource } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Conference } from '../conference';
 import { ConferenceListComponent } from '../conference-list-component';
@@ -9,16 +10,12 @@ import { ConferenceListComponent } from '../conference-list-component';
     templateUrl: './conference-list-table.component.html',
     styleUrls: ['./conference-list-table.component.scss']
 })
-export class ConferenceListTableComponent implements ConferenceListComponent {
+export class ConferenceListTableComponent implements ConferenceListComponent, OnChanges, OnInit {
 
     @Input() conferenceList: Conference[];
 
-    private _defaultDisplayedColumns = [
-        'conference',
-        'location',
-        'date',
-        'cfp'
-    ];
+    conferenceListDataSource = new MatTableDataSource();
+
     displayedColumns$ = this._breakpointObserver.observe([
         Breakpoints.XSmall,
         Breakpoints.Small
@@ -41,8 +38,38 @@ export class ConferenceListTableComponent implements ConferenceListComponent {
 
         }));
 
+    private _defaultDisplayedColumns = [
+        'conference',
+        'location',
+        'date',
+        'cfp'
+    ];
+    @ViewChild(MatSort) private _sort: MatSort;
+
     constructor(private _breakpointObserver: BreakpointObserver) {
     }
 
+    ngOnInit() {
+
+        this.conferenceListDataSource.sort = this._sort;
+
+        this.conferenceListDataSource.sortingDataAccessor = (conference: Conference, column) => {
+
+            if (column === 'cfp' && conference.cfpEndDate != null) {
+                return conference.cfpEndDate.toDate().getTime();
+            }
+
+            return null;
+
+        };
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
+        if (changes.conferenceList != null) {
+            this.conferenceListDataSource.data = this.conferenceList;
+        }
+
+    }
 
 }

@@ -1,8 +1,8 @@
 <table
-    *ngIf="displayedColumns$ | async as displayedColumns"
     class="mat-elevation-z8"
     mat-table
-    [dataSource]="conferenceList">
+    matSort
+    [dataSource]="conferenceListDataSource">
 
     <!-- Name Column. -->
     <ng-container matColumnDef="conference">
@@ -73,7 +73,8 @@
         <th
             *matHeaderCellDef
             class="wt-conference__cfp"
-            mat-header-cell>CFP
+            mat-header-cell
+            mat-sort-header>CFP
         </th>
 
         <td *matCellDef="let conference"
@@ -99,7 +100,7 @@
 
     </ng-container>
 
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    <tr *matHeaderRowDef="displayedColumns$ | async" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns$ | async;" mat-row></tr>
 
 </table>
