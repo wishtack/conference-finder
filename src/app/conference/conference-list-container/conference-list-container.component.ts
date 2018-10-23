@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ComponentLocation } from '../../../lib/dynamic-component-loader/dynamic-component-loader';
 import { CurrentConfigurationService } from '../../configuration/current-configuration.service';
 import { Conference } from '../conference';
@@ -33,22 +33,23 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
         private _currentConfigurationService: CurrentConfigurationService
     ) {
 
-        const configuration$ = this._currentConfigurationService.watchCurrentConfiguration()
-            .pipe(shareReplay(1));
+        this.conferenceListComponentLocation$ = this._currentConfigurationService
+            .watchConfigurationProperty('conferenceListDisplayMode')
+            .pipe(
+                map((conferenceListDisplayMode) => ({
+                    moduleId: `conference-list-${conferenceListDisplayMode}`,
+                    selector: `wt-conference-list-${conferenceListDisplayMode}`
+                }))
+            );
 
-        this.conferenceListComponentLocation$ = configuration$.pipe(
-            map(({conferenceListDisplayMode}) => ({
-                moduleId: `conference-list-${conferenceListDisplayMode}`,
-                selector: `wt-conference-list-${conferenceListDisplayMode}`
-            }))
-        );
-
-        this.conferenceSearchComponentLocation$ = configuration$.pipe(
-            map(({conferenceSearchDisplayMode}) => ({
-                moduleId: `conference-search-${conferenceSearchDisplayMode}`,
-                selector: `wt-conference-search-${conferenceSearchDisplayMode}`
-            }))
-        );
+        this.conferenceSearchComponentLocation$ = this._currentConfigurationService
+            .watchConfigurationProperty('conferenceSearchDisplayMode')
+            .pipe(
+                map((conferenceSearchDisplayMode) => ({
+                    moduleId: `conference-search-${conferenceSearchDisplayMode}`,
+                    selector: `wt-conference-search-${conferenceSearchDisplayMode}`
+                }))
+            );
 
     }
 

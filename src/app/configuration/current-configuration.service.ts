@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { distinctUntilChanged, map, pluck, publishReplay, refCount } from 'rxjs/operators';
 import { Condition } from '../rule-condition/condition';
 import { ConditionRegistry } from '../rule-condition/condition-registry';
 import { RuleRepository } from '../rule/rule-repository';
@@ -18,15 +18,14 @@ import { Configuration } from './configuration';
 })
 export class CurrentConfigurationService {
 
+    currentConfiguration$: Observable<Configuration>;
+
     constructor(
         private _conditionRegistry: ConditionRegistry,
         private _ruleRepository: RuleRepository
     ) {
-    }
 
-    watchCurrentConfiguration(): Observable<Configuration> {
-
-        return this._ruleRepository.watchRuleList()
+        this.currentConfiguration$ = this._ruleRepository.watchRuleList()
             .pipe(
                 map(ruleList => {
 
@@ -51,9 +50,19 @@ export class CurrentConfigurationService {
 
                         }, new Configuration());
 
-                })
+                }),
+                publishReplay(1),
+                refCount()
             );
 
+    }
+
+    watchConfigurationProperty(propertyName: keyof Configuration) {
+        return this.currentConfiguration$
+            .pipe(
+                pluck(propertyName),
+                distinctUntilChanged()
+            );
     }
 
     private _verifyCondition(condition: Condition) {

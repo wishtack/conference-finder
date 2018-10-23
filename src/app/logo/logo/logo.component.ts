@@ -17,7 +17,7 @@ export class LogoComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logoPictureUrl$ = this._currentConfigurationService.watchCurrentConfiguration()
+        this.logoPictureUrl$ = this._currentConfigurationService.currentConfiguration$
             .pipe(
                 map(configuration => {
 

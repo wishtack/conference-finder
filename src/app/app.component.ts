@@ -1,8 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { Scavenger } from '@wishtack/rx-scavenger';
-import { distinctUntilChanged, pluck } from 'rxjs/operators';
-import { Configuration } from './configuration/configuration';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { CurrentConfigurationService } from './configuration/current-configuration.service';
 
 @Component({
@@ -10,9 +7,7 @@ import { CurrentConfigurationService } from './configuration/current-configurati
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy, OnInit {
-
-    private _scavenger = new Scavenger(this);
+export class AppComponent implements OnInit {
 
     constructor(
         @Inject(DOCUMENT) private _document: Document,
@@ -23,33 +18,18 @@ export class AppComponent implements OnDestroy, OnInit {
 
     ngOnInit() {
 
-        this._watchConfigurationField('backgroundColor')
+        this._currentConfigurationService.watchConfigurationProperty('backgroundColor')
             .subscribe(backgroundColor => {
                 this._renderer.setStyle(this._document.body, 'backgroundColor', backgroundColor || null);
             });
 
-        this._watchConfigurationField('theme')
+        this._currentConfigurationService.watchConfigurationProperty('theme')
             .subscribe(theme => {
 
                 /* Using `setAttribute` instead of `addClass` because we want to reset the current theme. */
                 this._renderer.setAttribute(this._document.body, 'class', `wt-${theme}-theme`);
 
             });
-
-    }
-
-    ngOnDestroy() {
-    }
-
-    private _watchConfigurationField(field: keyof Configuration) {
-
-        return this._currentConfigurationService.watchCurrentConfiguration()
-            .pipe(
-                pluck(field),
-                /* Ignore if value doesn't change. */
-                distinctUntilChanged(),
-                this._scavenger.collect()
-            );
 
     }
 

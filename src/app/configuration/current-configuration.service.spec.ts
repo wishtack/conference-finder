@@ -30,7 +30,6 @@ describe('CurrentConfigurationService', () => {
     }));
 
     let currentConfigurationService: CurrentConfigurationService;
-    beforeEach(() => currentConfigurationService = TestBed.get(CurrentConfigurationService));
 
     let ruleRepository: RuleRepository;
     beforeEach(() => ruleRepository = TestBed.get(RuleRepository));
@@ -70,8 +69,10 @@ describe('CurrentConfigurationService', () => {
             })
         ]));
 
+        currentConfigurationService = TestBed.get(CurrentConfigurationService);
+
         let configuration: Configuration;
-        currentConfigurationService.watchCurrentConfiguration().subscribe(_configuration => configuration = _configuration);
+        currentConfigurationService.currentConfiguration$.subscribe(_configuration => configuration = _configuration);
 
         expect(configuration).toEqual(new Configuration({
             conferenceSearchDisplayMode: ConferenceSearchDisplayMode.Form,
