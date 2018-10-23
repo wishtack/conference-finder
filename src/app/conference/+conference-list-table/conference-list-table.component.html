@@ -1,28 +1,102 @@
 <table
+    *ngIf="displayedColumns$ | async as displayedColumns"
     class="mat-elevation-z8"
     mat-table
     [dataSource]="conferenceList">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th *matHeaderCellDef mat-header-cell> Name</th>
-        <td *matCellDef="let conference" mat-cell> {{conference.name}} </td>
+    <!-- Name Column. -->
+    <ng-container matColumnDef="conference">
+
+        <th *matHeaderCellDef mat-header-cell>Conference</th>
+
+        <td *matCellDef="let conference" mat-cell>
+
+            <div>
+                <a
+                    class="wt-link"
+                    target="_blank"
+                    [href]="conference.url">{{conference.name}}</a>
+            </div>
+
+            <div
+                class="wt-conference__details"
+                fxHide.gt-sm>
+
+                <div>
+                    <span>{{ conference.city }}</span>
+                    <span> / </span>
+                    <span>{{ conference.country }}</span>
+                </div>
+
+                <div>
+                    <span>{{ conference.startDate | date }}</span>
+                    <span> / </span>
+                    <span>{{ conference.endDate | date }}</span>
+                </div>
+
+            </div>
+
+        </td>
+
     </ng-container>
 
-    <!-- City Column -->
-    <ng-container matColumnDef="city">
-        <th *matHeaderCellDef mat-header-cell> City</th>
+    <!-- Location Column. -->
+    <ng-container
+        matColumnDef="location">
+
+        <th *matHeaderCellDef mat-header-cell>Location</th>
+
         <td *matCellDef="let conference" mat-cell>
             <span>{{ conference.city }}</span>
-        </td>
-    </ng-container>
-
-    <!-- Country Column -->
-    <ng-container matColumnDef="country">
-        <th *matHeaderCellDef mat-header-cell> Country</th>
-        <td *matCellDef="let conference" mat-cell>
+            <span> / </span>
             <span>{{ conference.country }}</span>
         </td>
+
+    </ng-container>
+
+    <!-- Date column. -->
+    <ng-container matColumnDef="date">
+
+        <th *matHeaderCellDef mat-header-cell>Date</th>
+
+        <td *matCellDef="let conference" mat-cell>
+            <span>{{ conference.startDate | date }}</span>
+            <span> / </span>
+            <span>{{ conference.endDate | date }}</span>
+        </td>
+
+    </ng-container>
+
+    <!-- CFP column. -->
+    <ng-container matColumnDef="cfp">
+
+        <th
+            *matHeaderCellDef
+            class="wt-conference__cfp"
+            mat-header-cell>CFP
+        </th>
+
+        <td *matCellDef="let conference"
+            class="wt-conference__cfp"
+            mat-cell>
+
+            <ng-container [ngSwitch]="(conference.cfpEndDate | isFuture) && conference.cfpUrl != null">
+
+                <!-- Is future and has url. -->
+                <a
+                    *ngSwitchCase="true"
+                    target="_blank"
+                    [href]="conference.cfpUrl">
+                    <button color="accent" mat-button>{{ conference.cfpEndDate | date }}</button>
+                </a>
+
+                <!-- Is past or doesn't have url. -->
+                <span *ngSwitchCase="false">{{ conference.cfpEndDate | date }}</span>
+
+            </ng-container>
+
+        </td>
+
     </ng-container>
 
     <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>

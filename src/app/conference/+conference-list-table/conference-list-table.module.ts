@@ -1,12 +1,14 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material';
+import { MatButtonModule, MatTableModule } from '@angular/material';
 import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { SharedModule } from '../../shared/shared.module';
 import { ConferenceListTableComponent } from './conference-list-table.component';
+import { IsFuturePipe } from './is-future.pipe';
 
 @NgModule({
     declarations: [
-        ConferenceListTableComponent
+        ConferenceListTableComponent,
+        IsFuturePipe
     ],
     entryComponents: [
         ConferenceListTableComponent
@@ -15,9 +17,10 @@ import { ConferenceListTableComponent } from './conference-list-table.component'
         ConferenceListTableComponent
     ],
     imports: [
-        CommonModule,
         DynamicComponentLoaderModule,
-        MatTableModule
+        MatButtonModule,
+        MatTableModule,
+        SharedModule
     ]
 })
 export class ConferenceListTableModule {
