@@ -16,7 +16,6 @@ import {
     Type
 } from '@angular/core';
 import { defer, Observable, of } from 'rxjs';
-import { fromPromise } from 'rxjs/internal-compatibility';
 import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './_internals';
 
 export interface ComponentLocation {
@@ -68,7 +67,7 @@ export class DynamicComponentLoader {
                 throw moduleNotFoundError(moduleId);
             }
 
-            const promise = this._ngModuleFactoryLoader.load(moduleRegistryItem.modulePath)
+            return this._ngModuleFactoryLoader.load(moduleRegistryItem.modulePath)
                 .then(ngModuleFactory => {
 
                     const moduleRef = ngModuleFactory.create(this._injector);
@@ -91,8 +90,6 @@ export class DynamicComponentLoader {
                     };
 
                 });
-
-            return fromPromise(promise);
 
         });
 
