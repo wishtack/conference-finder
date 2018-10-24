@@ -55,7 +55,7 @@ export class DynamicComponentLoader {
             return of(null);
         }
 
-        return defer(() => {
+        return defer(async () => {
 
             const {moduleId, selector} = componentLocation;
 
@@ -67,29 +67,25 @@ export class DynamicComponentLoader {
                 throw moduleNotFoundError(moduleId);
             }
 
-            return this._ngModuleFactoryLoader.load(moduleRegistryItem.modulePath)
-                .then(ngModuleFactory => {
+            const ngModuleFactory = await this._ngModuleFactoryLoader.load(moduleRegistryItem.modulePath);
 
-                    const moduleRef = ngModuleFactory.create(this._injector);
+            const moduleRef = ngModuleFactory.create(this._injector);
 
-                    const componentFactoryResolver = moduleRef.componentFactoryResolver;
+            const componentFactoryResolver = moduleRef.componentFactoryResolver;
 
-                    const value = Array.from(componentFactoryResolver['_factories']
-                        .values() as Array<ComponentFactory<any>>)
-                        .find(_value => _value.selector === selector);
+            const componentFactory = Array.from(
+                componentFactoryResolver['_factories'].values() as Array<ComponentFactory<any>>
+            )
+                .find(_componentFactory => _componentFactory.selector === selector);
 
-                    if (value == null) {
-                        throw componentNotFoundError(selector);
-                    }
+            if (componentFactory == null) {
+                throw componentNotFoundError(selector);
+            }
 
-                    const componentType = value.componentType;
-
-                    return {
-                        componentType,
-                        ngModuleFactory
-                    };
-
-                });
+            return {
+                componentType: componentFactory.componentType,
+                ngModuleFactory
+            };
 
         });
 
