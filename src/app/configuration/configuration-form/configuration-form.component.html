@@ -76,22 +76,26 @@
 
             <h4>Logo</h4>
 
-            <mat-radio-group
-                formControlName="logo"
-                fxLayout="row"
-                fxLayoutAlign="space-around">
+            <div fxLayout="row" fxLayoutAlign="center">
 
-                <mat-radio-button
-                    *ngIf="shouldShowInheritOption"
-                    [value]="null">Inherit
-                </mat-radio-button>
+                <mat-radio-group
+                    formControlName="logo"
+                    fxLayout="column"
+                    fxLayoutAlign="start start">
 
-                <mat-radio-button [value]="Logo.None">None</mat-radio-button>
-                <mat-radio-button [value]="Logo.AngularConnect">AngularConnect</mat-radio-button>
-                <mat-radio-button [value]="Logo.AngularConnect2018">AngularConnect 2018</mat-radio-button>
-                <mat-radio-button [value]="Logo.Wishtack">Wishtack</mat-radio-button>
+                    <mat-radio-button
+                        *ngIf="shouldShowInheritOption"
+                        [value]="null">Inherit
+                    </mat-radio-button>
 
-            </mat-radio-group>
+                    <mat-radio-button [value]="Logo.None">None</mat-radio-button>
+                    <mat-radio-button [value]="Logo.AngularConnect">AngularConnect</mat-radio-button>
+                    <mat-radio-button [value]="Logo.AngularConnect2018">AngularConnect 2018</mat-radio-button>
+                    <mat-radio-button [value]="Logo.Wishtack">Wishtack</mat-radio-button>
+
+                </mat-radio-group>
+
+            </div>
 
         </div>
 
