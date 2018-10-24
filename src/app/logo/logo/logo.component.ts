@@ -13,6 +13,12 @@ export class LogoComponent implements OnInit {
 
     logoPictureUrl$: Observable<string>;
 
+    private _logoToPictureUrlMap = new Map<Logo, string>([
+        [Logo.AngularConnect, 'angular-connect.svg'],
+        [Logo.AngularConnect2018, 'angular-connect-2018.png'],
+        [Logo.Wishtack, 'wishtack.svg']
+    ]);
+
     constructor(private _configurationResolver: ConfigurationResolver) {
     }
 
@@ -23,11 +29,13 @@ export class LogoComponent implements OnInit {
 
                     const logo = configuration.logo;
 
-                    if (logo == null || logo === Logo.None) {
+                    if (logo == null || logo === Logo.None || !this._logoToPictureUrlMap.has(logo)) {
                         return null;
                     }
 
-                    return require(`./${logo}.svg`);
+                    const pictureUrl = this._logoToPictureUrlMap.get(logo);
+
+                    return require(`./${pictureUrl}`);
 
                 })
             );
