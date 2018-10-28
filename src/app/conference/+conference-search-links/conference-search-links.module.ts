@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
 import { ConferenceSearchLinksComponent } from './conference-search-links.component';
 
 @NgModule({
@@ -16,8 +16,8 @@ import { ConferenceSearchLinksComponent } from './conference-search-links.compon
     ],
     imports: [
         CommonModule,
-        DynamicComponentLoaderModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        ReactiveComponentLoaderModule
     ]
 })
 export class ConferenceSearchLinksModule {

@@ -1,13 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ComponentLocation, ComponentRecipe, DynamicComponentLoader } from '../dynamic-component-loader';
+import { ComponentLocation, ComponentRecipe, ReactiveComponentLoader } from '../reactive-component-loader';
 
 @Component({
-    selector: 'wt-dynamic',
-    templateUrl: './dynamic.component.html',
-    styleUrls: ['./dynamic.component.scss']
+    selector: 'wt-lazy',
+    templateUrl: './lazy.component.html',
+    styleUrls: ['./lazy.component.scss']
 })
-export class DynamicComponent implements OnChanges {
+export class LazyComponent implements OnChanges {
 
     @Input() location: ComponentLocation;
     @Input() inputs: { [key: string]: any };
@@ -15,7 +15,7 @@ export class DynamicComponent implements OnChanges {
 
     componentRecipe$: Observable<ComponentRecipe<any>>;
 
-    constructor(private _dynamicComponentLoader: DynamicComponentLoader) {
+    constructor(private _dynamicComponentLoader: ReactiveComponentLoader) {
     }
 
     ngOnChanges(changes: SimpleChanges) {

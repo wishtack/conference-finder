@@ -7,8 +7,7 @@ import { GestureConfig } from '@angular/material';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
-import { DynamicComponentLoaderModule } from '../lib/dynamic-component-loader';
-
+import { ReactiveComponentLoaderModule } from '../lib/reactive-component-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -24,8 +23,8 @@ import { SharedModule } from './shared/shared.module';
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
-        DynamicComponentLoaderModule.forRoot(),
         HttpClientModule,
+        ReactiveComponentLoaderModule.forRoot(),
         SharedModule
     ],
     providers: [

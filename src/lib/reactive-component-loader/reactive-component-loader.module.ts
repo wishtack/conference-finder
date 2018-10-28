@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { provideRoutes } from '@angular/router';
 import { DynamicModule } from 'ng-dynamic-component';
-import { DYNAMIC_COMPONENT_MODULE_REGISTRY } from './_internals';
-import { DynamicComponent } from './dynamic/dynamic.component';
+import { REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY } from './_internals';
+import { LazyComponent } from './lazy/lazy.component';
 
 /**
  * @description
@@ -37,10 +37,10 @@ import { DynamicComponent } from './dynamic/dynamic.component';
  */
 @NgModule({
     declarations: [
-        DynamicComponent
+        LazyComponent
     ],
     exports: [
-        DynamicComponent
+        LazyComponent
     ],
     imports: [
         CommonModule,
@@ -52,11 +52,11 @@ import { DynamicComponent } from './dynamic/dynamic.component';
         provideRoutes([])
     ]
 })
-export class DynamicComponentLoaderModule {
+export class ReactiveComponentLoaderModule {
 
     static forRoot(): ModuleWithProviders {
         return {
-            ngModule: DynamicComponentLoaderModule,
+            ngModule: ReactiveComponentLoaderModule,
             providers: [
                 {
                     provide: NgModuleFactoryLoader,
@@ -73,14 +73,14 @@ export class DynamicComponentLoaderModule {
     static declareModule(args: { moduleId: string, modulePath: string }): ModuleWithProviders {
 
         return {
-            ngModule: DynamicComponentLoaderModule,
+            ngModule: ReactiveComponentLoaderModule,
             providers: [
                 provideRoutes([{
                     path: args.modulePath,
                     loadChildren: args.modulePath
                 }]),
                 {
-                    provide: DYNAMIC_COMPONENT_MODULE_REGISTRY,
+                    provide: REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY,
                     useValue: args,
                     multi: true
                 }

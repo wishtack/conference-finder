@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material';
-import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
 import { ConferenceSearchChipsComponent } from './conference-search-chips.component';
 
 @NgModule({
@@ -17,9 +17,9 @@ import { ConferenceSearchChipsComponent } from './conference-search-chips.compon
     ],
     imports: [
         CommonModule,
-        DynamicComponentLoaderModule,
         FlexLayoutModule,
-        MatChipsModule
+        MatChipsModule,
+        ReactiveComponentLoaderModule
     ]
 })
 export class ConferenceSearchChipsModule {

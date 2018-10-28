@@ -12,4 +12,5 @@ export interface ModuleRegistryItem {
     modulePath: string;
 }
 
-export const DYNAMIC_COMPONENT_MODULE_REGISTRY = new InjectionToken<ModuleRegistryItem>('DYNAMIC_COMPONENT_MODULE_REGISTRY');
+export const REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY =
+    new InjectionToken<ModuleRegistryItem>('REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY');

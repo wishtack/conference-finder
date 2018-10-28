@@ -16,7 +16,7 @@ import {
     Type
 } from '@angular/core';
 import { defer, Observable, of } from 'rxjs';
-import { DYNAMIC_COMPONENT_MODULE_REGISTRY, ModuleRegistryItem } from './_internals';
+import { ModuleRegistryItem, REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY } from './_internals';
 
 export interface ComponentLocation {
     moduleId: string;
@@ -39,10 +39,10 @@ export function componentNotFoundError(selector: string) {
 @Injectable({
     providedIn: 'root'
 })
-export class DynamicComponentLoader {
+export class ReactiveComponentLoader {
 
     constructor(
-        @Inject(DYNAMIC_COMPONENT_MODULE_REGISTRY) private _moduleRegistry: ModuleRegistryItem[],
+        @Inject(REACTIVE_COMPONENT_LOADER_MODULE_REGISTRY) private _moduleRegistry: ModuleRegistryItem[],
         private _injector: Injector,
         private _componentFactoryResolver: ComponentFactoryResolver,
         private _ngModuleFactoryLoader: NgModuleFactoryLoader

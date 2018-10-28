@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule, MatListModule } from '@angular/material';
-import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
 import { ConferenceListV2Component } from './conference-list-v2.component';
 
 @NgModule({
@@ -16,9 +16,9 @@ import { ConferenceListV2Component } from './conference-list-v2.component';
     ],
     imports: [
         CommonModule,
-        DynamicComponentLoaderModule,
         MatIconModule,
-        MatListModule
+        MatListModule,
+        ReactiveComponentLoaderModule
     ]
 })
 export class ConferenceListV2Module {

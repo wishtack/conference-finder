@@ -4,15 +4,15 @@
     </a>
 </div>
 
-<wt-dynamic
+<wt-lazy
     [inputs]="{conferenceFilter: conferenceFilter}"
     [location]="conferenceSearchComponentLocation$ | async"
-    [outputs]="{conferenceFilterChange: onConferenceFilterChange}"></wt-dynamic>
+    [outputs]="{conferenceFilterChange: onConferenceFilterChange}"></wt-lazy>
 
-<wt-dynamic
+<wt-lazy
     *ngIf="conferenceList?.length > 0"
     [inputs]="{conferenceList: conferenceList}"
-    [location]="conferenceListComponentLocation$ | async"></wt-dynamic>
+    [location]="conferenceListComponentLocation$ | async"></wt-lazy>
 
 <section
     *ngIf="conferenceList?.length === 0">

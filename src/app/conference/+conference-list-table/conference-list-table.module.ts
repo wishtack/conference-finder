@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatSortModule, MatTableModule } from '@angular/material';
-import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
 import { SharedModule } from '../../shared/shared.module';
 import { ConferenceListTableComponent } from './conference-list-table.component';
 import { IsFuturePipe } from './is-future.pipe';
@@ -17,10 +17,10 @@ import { IsFuturePipe } from './is-future.pipe';
         ConferenceListTableComponent
     ],
     imports: [
-        DynamicComponentLoaderModule,
         MatButtonModule,
         MatSortModule,
         MatTableModule,
+        ReactiveComponentLoaderModule,
         SharedModule
     ]
 })

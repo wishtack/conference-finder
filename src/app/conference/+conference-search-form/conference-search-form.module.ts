@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatSelectModule } from '@angular/material';
-import { DynamicComponentLoaderModule } from '../../../lib/dynamic-component-loader';
+import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
 import { ConferenceSearchFormComponent } from './conference-search-form.component';
 
 @NgModule({
@@ -17,9 +17,9 @@ import { ConferenceSearchFormComponent } from './conference-search-form.componen
     ],
     imports: [
         CommonModule,
-        DynamicComponentLoaderModule,
         MatFormFieldModule,
         MatSelectModule,
+        ReactiveComponentLoaderModule,
         ReactiveFormsModule
     ]
 })
