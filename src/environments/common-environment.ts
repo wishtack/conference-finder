@@ -13,5 +13,6 @@ export const commonEnvironment = {
         projectId: 'conference-finder',
         storageBucket: 'conference-finder.appspot.com',
         messagingSenderId: '625944555301'
-    }
+    },
+    googleTrackingId: null
 };
