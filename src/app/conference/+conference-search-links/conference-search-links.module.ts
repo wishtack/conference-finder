@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveComponentLoaderModule } from '../../../lib/reactive-component-loader';
+import { ReactiveComponentLoaderModule } from '@wishtack/reactive-component-loader';
 import { ConferenceSearchLinksComponent } from './conference-search-links.component';
 
 @NgModule({

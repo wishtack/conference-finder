@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ComponentLocation } from '@wishtack/reactive-component-loader';
 import { Scavenger } from '@wishtack/rx-scavenger';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ComponentLocation } from '../../../lib/reactive-component-loader/reactive-component-loader';
 import { ConfigurationResolver } from '../../configuration/configuration-resolver.service';
 import { Conference } from '../conference';
 import { ConferenceFilter } from '../conference-filter';

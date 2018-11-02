@@ -938,6 +938,13 @@
     "@webassemblyjs/wast-parser" "1.7.6"
     "@xtuc/long" "4.2.1"
 
+"@wishtack/reactive-component-loader@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@wishtack/reactive-component-loader/-/reactive-component-loader-0.1.0.tgz#39363669c7353c1878aa8fad0a7cf0350b36ffff"
+  integrity sha512-sLWW3jesufZGmwjiOTsTctyiZxAVMgvMFgEy2R9o224AyGRhiE12sYvTUIl+FLQrnu3a81bunJ8Jr2NpScZMbA==
+  dependencies:
+    tslib "^1.9.0"
+
 "@wishtack/rx-scavenger@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@wishtack/rx-scavenger/-/rx-scavenger-1.0.2.tgz#e551fc7475695156a5eea99d3511be64442eca1a"
