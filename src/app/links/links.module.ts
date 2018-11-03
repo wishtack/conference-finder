@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CirclePictureModule } from '../../lib/circle-picture/circle-picture.module';
 import { SharedModule } from '../shared/shared.module';
-import { LogoComponent } from './logo/logo.component';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
     declarations: [
-        LogoComponent
+        LinksComponent
     ],
     exports: [
-        LogoComponent
+        LinksComponent
     ],
     imports: [
         CirclePictureModule,
         SharedModule
     ]
 })
-export class LogoModule {
+export class LinksModule {
 }

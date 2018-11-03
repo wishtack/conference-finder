@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="center">
+
+    <div>
+
+        <div
+            *ngFor="let link of linkList"
+            fxLayout="row"
+            fxLayoutAlign="start center">
+
+            <wt-circle-picture
+                [diameter]="60"
+                [pictureUri]="link.pictureUri"></wt-circle-picture>
+
+            <a
+                class="wt-link"
+                [href]="link.uri">{{ link.text }}</a>
+
+        </div>
+
+    </div>
+
+</div>

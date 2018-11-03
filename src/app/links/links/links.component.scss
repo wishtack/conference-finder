@@ -1,0 +1,14 @@
+a {
+
+    color: rgba(0, 0, 0, .7);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+
+.wt-link {
+    margin-left: 10px;
+}
