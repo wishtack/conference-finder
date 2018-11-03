@@ -27,8 +27,4 @@ export class ConferenceSearchChipsComponent implements ConferenceSearchComponent
 
     }
 
-    onSelectionChange($event) {
-        console.log($event);
-    }
-
 }
