@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, map, pluck, publishReplay, refCount } from 'rxjs/operators';
+import { distinctUntilChanged, map, pluck, publishReplay, refCount, tap } from 'rxjs/operators';
 import { Condition } from '../rule-condition/condition';
 import { ConditionRegistry } from '../rule-condition/condition-registry';
 import { RuleRepository } from '../rule/rule-repository';
@@ -27,6 +27,7 @@ export class ConfigurationResolver {
 
         this.currentConfiguration$ = this._ruleRepository.watchRuleList()
             .pipe(
+                tap(console.log),
                 map(ruleList => {
 
                     return ruleList
@@ -51,6 +52,7 @@ export class ConfigurationResolver {
                         }, new Configuration());
 
                 }),
+                tap(console.log),
                 publishReplay(1),
                 refCount()
             );
