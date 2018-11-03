@@ -15,6 +15,7 @@ export class Configuration {
     conferenceListDisplayMode: ConferenceListDisplayMode;
     conferenceSearchDisplayMode: ConferenceSearchDisplayMode;
     logo: Logo;
+    shouldShowLinks: boolean;
     theme: Theme;
 
     constructor(args: Partial<Configuration> = {}) {
@@ -22,6 +23,7 @@ export class Configuration {
         this.conferenceSearchDisplayMode = args.conferenceSearchDisplayMode;
         this.conferenceListDisplayMode = args.conferenceListDisplayMode;
         this.logo = args.logo;
+        this.shouldShowLinks = args.shouldShowLinks;
         this.theme = args.theme;
     }
 

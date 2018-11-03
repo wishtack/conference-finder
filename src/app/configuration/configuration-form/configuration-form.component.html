@@ -120,4 +120,28 @@
 
     </div>
 
+    <mat-divider></mat-divider>
+
+    <!-- Show links. -->
+    <div class="wt-configuration__block">
+
+        <h3>Keep in Touch</h3>
+
+        <mat-radio-group
+            formControlName="shouldShowLinks"
+            fxLayout="row"
+            fxLayoutAlign="space-around">
+
+            <mat-radio-button
+                *ngIf="shouldShowInheritOption"
+                [value]="null">Inherit
+            </mat-radio-button>
+
+            <mat-radio-button [value]="false">Off</mat-radio-button>
+            <mat-radio-button [value]="true">On</mat-radio-button>
+
+        </mat-radio-group>
+
+    </div>
+
 </form>

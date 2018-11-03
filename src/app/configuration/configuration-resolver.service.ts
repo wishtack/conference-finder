@@ -57,7 +57,7 @@ export class ConfigurationResolver {
 
     }
 
-    watchConfigurationProperty(propertyName: keyof Configuration) {
+    watchConfigurationProperty(propertyName: keyof Configuration): Observable<any> {
         return this.currentConfiguration$
             .pipe(
                 pluck(propertyName),

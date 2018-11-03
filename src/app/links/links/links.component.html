@@ -4,10 +4,12 @@
 
         <div
             *ngFor="let link of linkList"
+            class="wt-link__container"
             fxLayout="row"
             fxLayoutAlign="start center">
 
             <wt-circle-picture
+                class="wt-icon"
                 [diameter]="60"
                 [pictureUri]="link.pictureUri"></wt-circle-picture>
 

@@ -19,8 +19,23 @@ export class LinksComponent {
             uri: 'https://wishtack.io'
         },
         {
+            pictureUri: require('./wishtack.svg'),
+            text: 'younes@wishtack.com',
+            uri: 'mailto:younes@wishtack.com'
+        },
+        {
             pictureUri: require('./github.png'),
-            text: 'Wishtack Steroids & Conference Finder',
+            text: 'Reactive Component Loader (Wishtack Steroids)',
+            uri: 'https://github.com/wishtack/wishtack-steroids'
+        },
+        {
+            pictureUri: require('./github.png'),
+            text: 'Conference Finder',
+            uri: 'https://github.com/wishtack/wishtack-conference-finder'
+        },
+        {
+            pictureUri: require('./github.png'),
+            text: 'Other repos',
             uri: 'https://github.com/wishtack'
         }
     ];

@@ -6,6 +6,7 @@
  */
 
 import { NgModule } from '@angular/core';
+import { MatDividerModule } from '@angular/material';
 import { ReactiveComponentLoaderModule } from '@wishtack/reactive-component-loader';
 import { LogoModule } from '../logo/logo.module';
 import { SharedModule } from '../shared/shared.module';
@@ -20,6 +21,7 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
     ],
     imports: [
         LogoModule,
+        MatDividerModule,
         ReactiveComponentLoaderModule.withModule({
             moduleId: 'conference-list-table',
             loadChildren: './+conference-list-table/conference-list-table.module#ConferenceListTableModule'
@@ -43,6 +45,10 @@ import { ConferenceListContainerComponent } from './conference-list-container/co
         ReactiveComponentLoaderModule.withModule({
             moduleId: 'conference-search-links',
             loadChildren: './+conference-search-links/conference-search-links.module#ConferenceSearchLinksModule'
+        }),
+        ReactiveComponentLoaderModule.withModule({
+            moduleId: 'links',
+            loadChildren: '../links/links.module#LinksModule'
         }),
         SharedModule
     ]

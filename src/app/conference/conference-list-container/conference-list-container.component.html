@@ -1,19 +1,32 @@
+<!-- Logo. -->
 <div fxLayout="row" fxLayoutAlign="center">
     <a href="https://wishtack.io" target="_blank">
         <wt-logo></wt-logo>
     </a>
 </div>
 
+<!-- Links. -->
+<div
+    class="wt-links-block"
+    *ngIf="shouldShowLinks$ | async">
+    <mat-divider></mat-divider>
+    <wt-lazy [location]="linksComponentLocation"></wt-lazy>
+    <mat-divider></mat-divider>
+</div>
+
+<!-- Conference search. -->
 <wt-lazy
-    [inputs]="{conferenceFilter: conferenceFilter}"
     [location]="conferenceSearchComponentLocation$ | async"
+    [inputs]="{conferenceFilter: conferenceFilter}"
     [outputs]="{conferenceFilterChange: onConferenceFilterChange}"></wt-lazy>
 
+<!-- Conference list. -->
 <wt-lazy
     *ngIf="conferenceList?.length > 0"
-    [inputs]="{conferenceList: conferenceList}"
-    [location]="conferenceListComponentLocation$ | async"></wt-lazy>
+    [location]="conferenceListComponentLocation$ | async"
+    [inputs]="{conferenceList: conferenceList}"></wt-lazy>
 
+<!-- Conference not found. -->
 <section
     *ngIf="conferenceList?.length === 0">
 

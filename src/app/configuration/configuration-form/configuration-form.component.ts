@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ConferenceListDisplayMode } from '../../conference/conference-list-display-mode.enum';
 import { ConferenceSearchDisplayMode } from '../../conference/conference-search-display-mode.enum';
 import { Theme } from '../../conference/theme.enum';
@@ -30,11 +30,13 @@ export class ConfigurationFormComponent implements OnChanges {
         conferenceListDisplayMode: new FormControl(),
         conferenceSearchDisplayMode: new FormControl(),
         logo: new FormControl(),
+        shouldShowLinks: new FormControl(),
         theme: new FormControl()
     });
 
     constructor() {
         this.configurationChange = this.configurationForm.valueChanges
+            .pipe(tap(console.log))
             .pipe(map(value => new Configuration(value)));
     }
 

@@ -21,7 +21,14 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
     conferenceFilter: ConferenceFilter;
     conferenceList: Conference[];
 
+    linksComponentLocation: ComponentLocation = {
+        moduleId: 'links',
+        selector: 'wt-links'
+    };
+
     notFoundPictureUri = require('./not-found.jpg');
+
+    shouldShowLinks$: Observable<boolean>;
 
     private _scavenger = new Scavenger(this);
 
@@ -35,7 +42,7 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
         this.conferenceListComponentLocation$ = this._configurationResolver
             .watchConfigurationProperty('conferenceListDisplayMode')
             .pipe(
-                map((conferenceListDisplayMode) => ({
+                map(conferenceListDisplayMode => ({
                     moduleId: `conference-list-${conferenceListDisplayMode}`,
                     selector: `wt-conference-list-${conferenceListDisplayMode}`
                 }))
@@ -44,11 +51,14 @@ export class ConferenceListContainerComponent implements OnDestroy, OnInit {
         this.conferenceSearchComponentLocation$ = this._configurationResolver
             .watchConfigurationProperty('conferenceSearchDisplayMode')
             .pipe(
-                map((conferenceSearchDisplayMode) => ({
+                map(conferenceSearchDisplayMode => ({
                     moduleId: `conference-search-${conferenceSearchDisplayMode}`,
                     selector: `wt-conference-search-${conferenceSearchDisplayMode}`
                 }))
             );
+
+        this.shouldShowLinks$ = this._configurationResolver
+            .watchConfigurationProperty('shouldShowLinks');
 
     }
 
