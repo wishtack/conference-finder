@@ -1,27 +1,41 @@
-# WishtackAngularInterchangeableComponentsDemo
+<p align="center">
+    <img src="https://github.com/wishtack/wishtack-steroids/raw/master/demo.gif" alt="Conference Finder Demo">
+    <h1>Conference Finder Demo</h1>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+# Setup
 
-## Development server
+## 1. Firebase
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### 1.1. Install Firebase CLI
 
-## Code scaffolding
+```shell
+npm install -g firebase-tools
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 1.2. Add project
 
-## Build
+### 1.3. Login
+```shell
+firebase login
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## 2. Deploy
 
-## Running unit tests
+###  Configuration
+Update your `environment.prod.ts` with your firebase .
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Deploy
+```shell
+yarn deploy
+```
 
-## Running end-to-end tests
+## Download firebase service account credentials
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+https://firebase.google.com/docs/admin/setup#add_firebase_to_your_app
 
-## Further help
+## Add administrators
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```shell
+yarn set-admin-role
+```
