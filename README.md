@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/wishtack/wishtack-steroids/raw/master/demo.gif" alt="Conference Finder Demo">
+    <img src="https://github.com/wishtack/wishtack-conference-finder/blob/master/demo.gif" alt="Conference Finder Demo">
     <h1>Conference Finder Demo</h1>
 </p>
 
