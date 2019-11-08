@@ -42,7 +42,7 @@ export class ConferenceRepository {
     getConferenceList(conferenceFilter: ConferenceFilter) {
 
         const url = `https://raw.githubusercontent.com/tech-conferences/conference-data/master/conferences`
-            + `/2019/${encodeURIComponent(conferenceFilter.topicId)}.json`;
+            + `/2020/${encodeURIComponent(conferenceFilter.topicId)}.json`;
 
         return this._httpClient.get<Partial<Conference>[]>(url)
             .pipe(map(conferenceDataList => conferenceDataList.map(data => new Conference(data))));
